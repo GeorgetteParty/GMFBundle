@@ -5,7 +5,7 @@ namespace Gmf\GmfBundle\Model;
 /**
  * @author lutangar
  */
-abstract class GameBrick
+abstract class Brick
 {
 
 }

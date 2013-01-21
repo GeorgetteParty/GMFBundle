@@ -5,7 +5,7 @@ namespace Gmf\GmfBundle\Model;
 /**
  * @author lutangar
  */
-abstract class GameCore
+abstract class Core
 {
 
 }
