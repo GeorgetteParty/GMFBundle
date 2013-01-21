@@ -1,6 +1,6 @@
 <?php
 
-namespace Gmf\GmfBundle\Model;
+namespace Gmf\GmfBundle\Model\Game;
 
 /**
  * @author lutangar
