@@ -2,11 +2,14 @@
 
 namespace Gmf\GmfBundle\Core;
 
+use Gmf\GmfBundle\Model\Game\Core as BaseGameCore;
+
 use Gmf\GmfBundle\Brick\GameBrick;
 use Gmf\GmfBundle\Brick\View\ViewBrick;
 use Gmf\GmfBundle\Exception\RenderException;
 
-class GameCore
+
+class GameCore extends BaseGameCore
 {
     /**
      * @var GameBrick[]

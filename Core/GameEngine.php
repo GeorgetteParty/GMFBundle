@@ -1,8 +1,14 @@
 <?php
 
 namespace Gmf\GmfBundle\Core;
+use Gmf\GmfBundle\Model\Game\Engine as BaseGameEngine;
 
-class GameEngine
+/**
+ *
+ * @author
+ * @author
+ */
+class GameEngine extends BaseGameEngine
 {
     protected $cores = array();
 
