@@ -1,7 +1,7 @@
 {
   "name": "georgette-party/gmf-bundle",
   "type": "symfony-bundle",
-  "description": "Game management framework",
+  "description": "Game Management Framework (not ready)",
   "keywords": ["Game"],
   "homepage": "https://github.com/GeorgetteParty/GMFBundle",
   "license": "MIT",
