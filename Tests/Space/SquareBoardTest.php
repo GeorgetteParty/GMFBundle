@@ -34,6 +34,42 @@ class SquareBoardTests extends \PHPUnit_Framework_TestCase
         // $cell = 2D-able Cell at [0,0]
         //$found = $this->board->findAdjacentOf($cell);
         // compare with {[-1,0],[0,1],[0,-1],[1,0]}
+        // do "corners" count as adjacency ?
+
+        // dumping some ascii grids
+        // cool link : http://recessiondodgetovictory.wordpress.com/2011/01/12/ascii-chessboard/
+
+        $asciiGrid = <<<EOF
+-----
+| | |
+-----
+| | |
+-----
+EOF;
+        $asciiGrid = <<<EOF
+-------
+|  |  |
+|  |  |
+-------
+|  |  |
+|  |  |
+-------
+EOF;
+        $asciiGrid = <<<EOF
+---------
+|   |   |
+|   |   |
+|   |   |
+---------
+|   |   |
+|   |   |
+|   |   |
+---------
+EOF;
 
     }
 }
+
+
+
+

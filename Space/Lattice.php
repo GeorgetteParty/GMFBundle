@@ -5,10 +5,10 @@ namespace Gmf\GmfBundle\Space;
 interface Lattice
 {
     /**
-     * Returns an array of Cells
+     * Returns an array of Cells adjacent with passed $cell
      *
      * @param  Cell $cell
      * @return Cell[]
      */
-    public function findAdjacentOf(Cell $cell);
+    public function findAdjacentOf(Cell $cell); // findByAdjacencyTo ? <- more Doctrine-like
 }

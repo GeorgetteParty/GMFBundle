@@ -16,7 +16,7 @@
   </php>
   
   <testsuites>
-    <testsuite name="Goutte TreeBundle Test Suite">
+    <testsuite name="GMF Test Suite">
       <directory suffix="Test.php">Tests</directory>
     </testsuite>
   </testsuites>
