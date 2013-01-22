@@ -1,18 +1,14 @@
-# Bootstrap
-app/bootstrap*
 
-# Symfony directories
+# Composer
 vendor/*
-*/logs/*
-*/cache/*
-web/uploads/*
-web/bundles/*
+composer.lock
+composer.phar
 
-# Configuration files
-app/config/parameters.ini
-app/config/parameters.yml
+# Testing
+phpunit.xml
 
 # ide
 .idea/*
+
 # kde
 .directory

@@ -1,4 +1,10 @@
 GMF
 ===
 
-Game Management Framework PHP Symfony2
+Game Management Framework in PHP for Symfony2
+
+Dependencies
+============
+
+- Composer
+- PHP >= 5.4

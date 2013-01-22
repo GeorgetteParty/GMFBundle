@@ -2,7 +2,7 @@
 
 namespace Gmf\GmfBundle\Tests\Core;
 
-use Gmf\GmfBundle\Brick\View\ViewBrick;
+use Gmf\GmfBundle\Brick\ViewBrick;
 use Gmf\GmfBundle\Core\GameCore;
 use Gmf\GmfBundle\Exception\RenderException;
 
@@ -32,15 +32,21 @@ class GameCoreTests extends \PHPUnit_Framework_TestCase
     public function testRender()
     {
         $core = new GameCore();
-        // core do not have view brick, it should raise an RenderException
+
+        $raised = false;
         try {
             $core->render();
-        } catch (\Exception $e) {
-            $this->assertInstanceOf('Gmf\GmfBundle\Exception\RenderException', $e);
+        } catch (\Gmf\GmfBundle\Exception\RenderException $e) {
+            $raised = true;
         }
+        $this->assertTrue($raised, 'It should raise a Render Exception if it has no view brick');
+
         $core->addBrick(new ViewBrick());
         $render = $core->render();
-        // core should not have a empty render now
-        $this->assertNotEquals('', $render, 'GameCore has an empty render !');
+
+        $this->assertEquals('', $render, 'It should render nothing if it has an empty view brick');
+
+        // core should have a empty render now
+        //$this->assertNotEquals('', $render, 'GameCore has an empty render !');
     }
 }

@@ -1,0 +1,37 @@
+{
+  "name": "georgette-party/gmf-bundle",
+  "type": "symfony-bundle",
+  "description": "Game management framework",
+  "keywords": ["Game"],
+  "homepage": "https://github.com/GeorgetteParty/GMFBundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name":  "JohnKrovitch",
+      "email": "john@krovitch.info"
+    },
+    {
+      "name":  "Lutangar",
+      "email": "georges@party.org"
+    },
+    {
+      "name":  "Goutte",
+      "email": "goutte@goutte.do"
+    }
+  ],
+  "require": {
+    "php": ">=5.4"
+  },
+  "require-dev": {
+    "symfony/dependency-injection": ">=2.1,<2.3-dev"
+    ,"symfony/config": ">=2.1,<2.3-dev"
+    ,"symfony/yaml": ">=2.1,<2.3-dev"
+    ,"symfony/http-kernel": ">=2.1,<2.3-dev"
+  },
+  "autoload": {
+    "psr-0": {
+      "Gmf\\GmfBundle": ""
+    }
+  },
+  "target-dir": "GMF/GMFBundle"
+}
