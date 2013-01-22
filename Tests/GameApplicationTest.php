@@ -4,9 +4,8 @@ namespace Gmf\GmfBundle\Tests\Core;
 
 use Gmf\GmfBundle\Core\GameApplication;
 use Gmf\GmfBundle\Core\GameEngine;
-use PHPUnit_Framework_TestCase;
 
-class GameApplicationTests extends PHPUnit_Framework_TestCase
+class GameApplicationTests extends \PHPUnit_Framework_TestCase
 {
     /**
      * Application should initialize games engines
