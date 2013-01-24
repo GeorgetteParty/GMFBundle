@@ -50,7 +50,7 @@ class AsciiGridTest extends \PHPUnit_Framework_TestCase
     {
         $actual = AsciiGrid::toArray($string);
 
-        //$this->assertEquals($expected, $actual, $message); fixme
+        $this->assertEquals($expected, $actual, $message);
     }
 
 
@@ -65,6 +65,15 @@ class AsciiGridTest extends \PHPUnit_Framework_TestCase
 | A |
 +---+
 | B |
++---+
+EOF
+            ),
+            array(
+                "It should convert an array with a single element into a single cell",
+                array('A'),
+                <<<EOF
++---+
+| A |
 +---+
 EOF
             ),
@@ -97,7 +106,7 @@ EOF
 
             array(
                 "It should interpret NULL as an empty cell",
-                array(null),
+                array(array(null)),
                 <<<EOF
 +---+
 |   |
@@ -106,7 +115,7 @@ EOF
             ),
             array(
                 "It should convert single-cell grids",
-                array('A'),
+                array(array('A')),
                 <<<EOF
 +---+
 | A |
@@ -115,7 +124,7 @@ EOF
             ),
             array(
                 "It should work with integers",
-                array('7'),
+                array(array('7')),
                 <<<EOF
 +---+
 | 7 |
@@ -123,8 +132,8 @@ EOF
 EOF
             ),
             array(
-                "It should work with any unicode character",
-                array('☯'),
+                "It should work with any unicode character, if using mb_internal_encoding('UTF-8')",
+                array(array('☯')),
                 <<<EOF
 +---+
 | ☯ |
