@@ -2,6 +2,18 @@
 
 namespace Gmf\GmfBundle\Tool\String;
 
+function strpos_recursive($haystack, $needle, $offset = 0, &$results = array())
+{
+    $offset = strpos($haystack, $needle, $offset);
+    if ($offset === false) {
+        return $results;
+    } else {
+        $results[] = $offset;
+
+        return strpos_recursive($haystack, $needle, ($offset + 1), $results);
+    }
+}
+
 /**
  * Please set :
  * mb_internal_encoding('UTF-8');
@@ -24,31 +36,40 @@ class AsciiGrid
     {
         $arrayOfLines = explode(PHP_EOL, $string);
 
-//        // Guess the number of columns by counting the first line's BOX_DRAWING_INTERSECTION
-//        $nbOfCols = substr_count($string, self::BOX_DRAWING_INTERSECTION) - 1;
-//
-//        // Guess the number of rows by counting the lines that start with BOX_DRAWING_INTERSECTION
-//        $nbOfRows = 0;
-//        foreach ($arrayOfLines as $line) {
-//            if (self::BOX_DRAWING_INTERSECTION == substr($line, 0, 1)) {
-//                $nbOfRows++;
-//            }
-//        }
-//        $nbOfRows--;
+        // Guess the number of columns by counting the first line's BOX_DRAWING_INTERSECTION
+        $nbOfCols = substr_count($arrayOfLines[0], self::BOX_DRAWING_INTERSECTION) - 1;
+        $posOfVerticalSeparators = strpos_recursive($arrayOfLines[0], self::BOX_DRAWING_INTERSECTION);
 
-        $grid = array();
-        $row = null;
+        var_dump($posOfVerticalSeparators);
+
+        // Guess the number of rows by counting the lines that start with BOX_DRAWING_INTERSECTION
+        $nbOfRows = 0;
+        foreach ($arrayOfLines as $line) {
+            if (self::BOX_DRAWING_INTERSECTION == substr($line, 0, 1)) {
+                $nbOfRows++;
+            }
+        }
+        $nbOfRows--;
+
+        $grid = array(); $row = null;
 
         foreach ($arrayOfLines as $line) {
             if (self::BOX_DRAWING_INTERSECTION == substr($line, 0, 1)) { // horizontal separator line
                 if (null !== $row) $grid[] = $row;
                 $row = array();
             } else { // data line
-                $data = explode(self::BOX_DRAWING_VERTICAL_LINE, $line);
-                foreach ($data as $k => $v) {
-                    if ($k > 0 && $k < count($data) - 1) { // first and last are garbage
-                        $row[] = trim($v);
+
+                $startPos = 0;
+                foreach ($posOfVerticalSeparators as $k => $endPos) {
+                    if ($k > 0) {
+                        $data = trim(mb_substr($line, $startPos+1, $endPos-$startPos-1));
+                        if (isset($row[$k-1])) {
+                            $row[$k-1] .= $data;
+                        } else {
+                            $row[$k-1] = $data;
+                        }
                     }
+                    $startPos = $endPos;
                 }
             }
         }

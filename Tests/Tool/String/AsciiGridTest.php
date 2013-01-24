@@ -94,7 +94,23 @@ EOF
 
     public function stringToArrayProvider()
     {
-        $r = array();
+        $r = array(
+
+            array(
+                "It should read bigger cells and concatenate multiline content",
+                array(array('CAPBAC', 'P'), array('B', 'DK')),
+                <<<EOF
++-----+-----+
+| CAP |  P  |
+| BAC |     |
++-----+-----+
+|     |  D  |
+|  B  |  K  |
++-----+-----+
+EOF
+            ),
+
+        );
 
         return array_merge($this->reciprocalTransformationProvider(), $r);
     }
@@ -128,6 +144,15 @@ EOF
                 <<<EOF
 +---+
 | 7 |
++---+
+EOF
+            ),
+            array(
+                "It should work with the pipe",
+                array(array('|')),
+                <<<EOF
++---+
+| | |
 +---+
 EOF
             ),
@@ -195,6 +220,42 @@ EOF;
 +---+---+
 |   | D |
 +---+---+
+EOF;
+
+        $asciiGrid = <<<EOF
++-----+-----+
+|     |     |
+|     |     |
++-----+-----+
+|     |     |
+|     |     |
++-----+-----+
+EOF;
+
+        $asciiGrid = <<<EOF
++-------+-------+
+|       |       |
+| LUCKY |  777  |
+|       |       |
++-------+-------+
+|       |       |
+| EARTH |  (+)  |
+|       |       |
++-------+-------+
+EOF;
+
+        $asciiGrid = <<<EOF
++---------+---------+
+|         |         |
+|         |         |
+|         |         |
+|         |         |
++---------+---------+
+|         |         |
+|         |         |
+|         |         |
+|         |         |
++---------+---------+
 EOF;
 
 
