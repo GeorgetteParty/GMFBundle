@@ -2,19 +2,32 @@
 
 namespace Gmf\GmfBundle\Tool\String;
 
-function strpos_recursive($haystack, $needle, $offset = 0, &$results = array())
-{
-    $offset = strpos($haystack, $needle, $offset);
-    if ($offset === false) {
-        return $results;
-    } else {
-        $results[] = $offset;
+if (!function_exists('strpos_recursive')) {
+    /**
+     * Returns an array of the positions of $nedle in $haystack, starting at $offset
+     *
+     * @param $haystack
+     * @param $needle
+     * @param int $offset
+     * @param array $results
+     * @return array
+     */
+    function strpos_recursive($haystack, $needle, $offset = 0, &$results = array())
+    {
+        $offset = strpos($haystack, $needle, $offset);
+        if ($offset === false) {
+            return $results;
+        } else {
+            $results[] = $offset;
 
-        return strpos_recursive($haystack, $needle, ($offset + 1), $results);
+            return strpos_recursive($haystack, $needle, ($offset + 1), $results);
+        }
     }
 }
 
 /**
+ * Manages the conversion between simple ascii grids and 2D arrays
+ *
  * Please set :
  * mb_internal_encoding('UTF-8');
  *
@@ -36,9 +49,15 @@ class AsciiGrid
     {
         $arrayOfLines = explode(PHP_EOL, $string);
 
+        if (0 == count($arrayOfLines)) return array();
+
+        // Get the positions of the vertical separators
+        $posOfVerticalSeparators = strpos_recursive($arrayOfLines[0], self::BOX_DRAWING_INTERSECTION);
+
+        /* (useless for now)
+
         // Guess the number of columns by counting the first line's BOX_DRAWING_INTERSECTION
         $nbOfCols = substr_count($arrayOfLines[0], self::BOX_DRAWING_INTERSECTION) - 1;
-        $posOfVerticalSeparators = strpos_recursive($arrayOfLines[0], self::BOX_DRAWING_INTERSECTION);
 
         // Guess the number of rows by counting the lines that start with BOX_DRAWING_INTERSECTION
         $nbOfRows = 0;
@@ -48,6 +67,7 @@ class AsciiGrid
             }
         }
         $nbOfRows--;
+        */
 
         $grid = array(); $row = null;
 
@@ -56,16 +76,11 @@ class AsciiGrid
                 if (null !== $row) $grid[] = $row;
                 $row = array();
             } else { // data line
-
                 $startPos = 0;
                 foreach ($posOfVerticalSeparators as $k => $endPos) {
                     if ($k > 0) {
                         $data = trim(mb_substr($line, $startPos+1, $endPos-$startPos-1));
-                        if (isset($row[$k-1])) {
-                            $row[$k-1] .= $data;
-                        } else {
-                            $row[$k-1] = $data;
-                        }
+                        $row[$k-1] = (isset($row[$k-1]) ? $row[$k-1] : '') . $data;
                     }
                     $startPos = $endPos;
                 }

@@ -98,15 +98,31 @@ EOF
 
             array(
                 "It should read bigger cells and concatenate multiline content",
-                array(array('CAPBAC', 'P'), array('B', 'DK')),
+                array(array('CORBAC', '&'), array('GT', 'DKP')),
                 <<<EOF
 +-----+-----+
-| CAP |  P  |
+| COR |  &  |
 | BAC |     |
 +-----+-----+
 |     |  D  |
-|  B  |  K  |
+| GT  |  KP |
 +-----+-----+
+EOF
+            ),
+
+            array(
+                "It should read bigger cells and concatenate multiline content",
+                array(array('LUCKY', '777'), array('EARTH&VENUS', '609')),
+                <<<EOF
++-------+-------+
+|       |       |
+| LUCKY |  777  |
+|       |       |
++-------+-------+
+| EARTH |   6   |
+|   &   |   0   |
+| VENUS |   9   |
++-------+-------+
 EOF
             ),
 
@@ -320,8 +336,3 @@ $unicodeGrid = <<<EOF
 EOF;
 
 $caca = 'prout';
-
-
-
-
-
