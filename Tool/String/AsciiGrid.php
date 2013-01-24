@@ -21,13 +21,10 @@ class AsciiGrid
      *
      * @param $array
      * @return string
-     * @throws \Exception
      */
     static public function toString($array)
     {
-        if (!is_array($array))  {
-            throw new \Exception("Array is required");
-        }
+        if (!is_array($array)) $array = array($array);
 
         // Count the max number of cols
         $nbOfCols = 0;
@@ -45,14 +42,15 @@ class AsciiGrid
             $gridLine .= "---+";
         }
 
+        // For each row ...
         $grid = '';
-
         foreach ($array as $row) {
             if (!is_array($row)) $row = array($row);
 
             $grid .= $gridLine . "\n";
             $grid .= "|";
 
+            // For each col ...
             foreach ($row as $col) {
                 $letter = mb_substr((string)$col, 0, 1);
 
@@ -63,6 +61,7 @@ class AsciiGrid
             $grid .= "\n";
         }
 
+        // Add the ending horizontal separator
         $grid .= $gridLine;
 
         return $grid;

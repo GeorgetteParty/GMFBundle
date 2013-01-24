@@ -68,6 +68,15 @@ class AsciiGridTest extends \PHPUnit_Framework_TestCase
 +---+
 EOF
             ),
+            array(
+                "It should convert an non-array into a single cell",
+                'A',
+                <<<EOF
++---+
+| A |
++---+
+EOF
+            ),
         );
 
         return array_merge($this->reciprocalTransformationProvider(), $r);
