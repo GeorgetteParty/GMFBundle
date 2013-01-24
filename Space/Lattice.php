@@ -10,5 +10,5 @@ interface Lattice
      * @param  Cell $cell
      * @return Cell[]
      */
-    public function findAdjacentOf(Cell $cell); // findByAdjacencyTo ? <- more Doctrine-like
+    public function findAdjacentOf(Cell $cell); // findByAdjacencyTo ? <- more Doctrine-like, a Lattice being somewhat a Repository for Cells
 }

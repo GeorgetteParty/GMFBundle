@@ -1,5 +1,14 @@
 <?php
 
+/*
+   ______            __  __
+  / ____/___  __  __/ /_/ /____
+ / / __/ __ \/ / / / __/ __/ _ \
+/ /_/ / /_/ / /_/ / /_/ /_/  __/
+\____/\____/\__,_/\__/\__/\___/
+
+ */
+
 namespace Gmf\GmfBundle\Tests\Space;
 
 class SquareBoard implements \Gmf\GmfBundle\Space\Lattice
@@ -7,7 +16,7 @@ class SquareBoard implements \Gmf\GmfBundle\Space\Lattice
     use \Gmf\GmfBundle\Space\Lattice\Tesselation\Dimension2\Grid;
 }
 
-class SquareBoardTests extends \PHPUnit_Framework_TestCase
+class SquareBoardTest extends \PHPUnit_Framework_TestCase
 {
     protected $board;
 
@@ -36,9 +45,10 @@ class SquareBoardTests extends \PHPUnit_Framework_TestCase
         // compare with {[-1,0],[0,1],[0,-1],[1,0]}
         // do "corners" count as adjacency ?
 
-        // dumping some ascii grids
+        // dumping some ascii/unicode grids
         // cool link : http://recessiondodgetovictory.wordpress.com/2011/01/12/ascii-chessboard/
-        // cool generator: http://www.sensefulsolutions.com/2010/10/format-text-as-table.html (use Unicode Art)
+        // table generator: http://www.sensefulsolutions.com/2010/10/format-text-as-table.html (use Unicode Art)
+        // text generator : http://www.network-science.de/ascii/ and http://patorjk.com/software/taag/
 
 $asciiGrid = <<<EOF
 +---+---+
