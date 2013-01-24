@@ -4,14 +4,28 @@ namespace Gmf\GmfBundle\Core;
 
 class GameApplication
 {
+    /**
+     * @var GameEngine[]
+     */
     protected $engines = array();
+
+    /**
+     * Create new games engines
+     */
+    public function __construct()
+    {
+        //TODO get engines from configuration, parameters ?
+        $this->engines[] = new GameEngine();
+    }
 
     /**
      * Initialize games engines
      */
-    public function __construct()
+    public function init()
     {
-        $this->engines[] = new GameEngine();
+        foreach ($this->engines as $engine) {
+            $engine->init();
+        }
     }
 
     /**
