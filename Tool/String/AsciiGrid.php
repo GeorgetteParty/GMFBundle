@@ -40,8 +40,6 @@ class AsciiGrid
         $nbOfCols = substr_count($arrayOfLines[0], self::BOX_DRAWING_INTERSECTION) - 1;
         $posOfVerticalSeparators = strpos_recursive($arrayOfLines[0], self::BOX_DRAWING_INTERSECTION);
 
-        var_dump($posOfVerticalSeparators);
-
         // Guess the number of rows by counting the lines that start with BOX_DRAWING_INTERSECTION
         $nbOfRows = 0;
         foreach ($arrayOfLines as $line) {

@@ -148,11 +148,29 @@ EOF
 EOF
             ),
             array(
-                "It should work with the pipe",
+                "It should work with the pipe symbol (|)",
                 array(array('|')),
                 <<<EOF
 +---+
 | | |
++---+
+EOF
+            ),
+            array(
+                "It should work with the plus symbol (+)",
+                array(array('+')),
+                <<<EOF
++---+
+| + |
++---+
+EOF
+            ),
+            array(
+                "It should work with the minus symbol (-)",
+                array(array('-')),
+                <<<EOF
++---+
+| - |
 +---+
 EOF
             ),
