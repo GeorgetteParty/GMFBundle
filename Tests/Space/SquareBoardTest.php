@@ -38,33 +38,57 @@ class SquareBoardTests extends \PHPUnit_Framework_TestCase
 
         // dumping some ascii grids
         // cool link : http://recessiondodgetovictory.wordpress.com/2011/01/12/ascii-chessboard/
+        // cool generator: http://www.sensefulsolutions.com/2010/10/format-text-as-table.html (use Unicode Art)
 
-        $asciiGrid = <<<EOF
------
-| | |
------
-| | |
------
+$asciiGrid = <<<EOF
++---+---+
+|   |   |
++---+---+
+|   |   |
++---+---+
 EOF;
-        $asciiGrid = <<<EOF
--------
-|  |  |
-|  |  |
--------
-|  |  |
-|  |  |
--------
+
+
+$unicodeGrid = <<<EOF
+┌───┬───┐
+│   │   │
+├───┼───┤
+│   │   │
+└───┴───┘
 EOF;
-        $asciiGrid = <<<EOF
----------
-|   |   |
-|   |   |
-|   |   |
----------
-|   |   |
-|   |   |
-|   |   |
----------
+
+
+$unicodeGrid = <<<EOF
+┌─────┬─────┐
+│     │     │
+│     │     │
+├─────┼─────┤
+│     │     │
+│     │     │
+└─────┴─────┘
+EOF;
+
+
+$unicodeGrid = <<<EOF
+┌───────┬───────┐
+│       │       │
+│       │       │
+│       │       │
+├───────┼───────┤
+│       │       │
+│       │       │
+│       │       │
+└───────┴───────┘
+EOF;
+
+
+
+$unicodeGrid = <<<EOF
+╔═══╦═══╗
+║   ║   ║
+╠═══╬═══╣
+║   ║   ║
+╚═══╩═══╝
 EOF;
 
     }
