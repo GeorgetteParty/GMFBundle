@@ -35,27 +35,39 @@ if (!function_exists('mb_str_pad')) {
      * @param int $pad_type
      * @return string
      */
-    function mb_str_pad($input, $pad_length, $pad_string=' ', $pad_type=STR_PAD_RIGHT) {
-        $diff = strlen($input) - mb_strlen($input);
-        return str_pad($input, $pad_length+$diff, $pad_string, $pad_type);
+    function mb_str_pad($input, $pad_length, $pad_string = ' ', $pad_type = STR_PAD_RIGHT)
+    {
+        return str_pad($input, $pad_length + strlen($input) - mb_strlen($input), $pad_string, $pad_type);
     }
 }
 
 /**
  * Manages the conversion between simple ascii grids and 2D arrays
  *
- * Please set :
+ * Please set (if you are using Unicode characters) :
  * mb_internal_encoding('UTF-8');
  *
  * See Gmf\GmfBundle\Tests\Tool\String\AsciiGridTest for documentation on how this behaves
+ *
+ * Usage example :
+ *
+ * echo AsciiSquareGrid::toString(array(array('A', 'B'), array(null, 'D')));
+ *
+ * will print :
+ *
+ * +---+---+
+ * | A | B |
+ * +---+---+
+ * |   | D |
+ * +---+---+
  *
  * @author Goutte
  */
 class AsciiGrid
 {
-    const BOX_DRAWING_INTERSECTION    = '+';
+    const BOX_DRAWING_INTERSECTION = '+';
     const BOX_DRAWING_HORIZONTAL_LINE = '-';
-    const BOX_DRAWING_VERTICAL_LINE   = '|';
+    const BOX_DRAWING_VERTICAL_LINE = '|';
 
     /**
      * @param  string $string
@@ -85,7 +97,8 @@ class AsciiGrid
         $nbOfRows--;
         */
 
-        $grid = array(); $row = null;
+        $grid = array();
+        $row = null;
 
         foreach ($arrayOfLines as $line) {
             if (self::BOX_DRAWING_INTERSECTION == mb_substr($line, 0, 1)) { // horizontal separator line
@@ -95,15 +108,15 @@ class AsciiGrid
                 $startPos = 0;
                 foreach ($posOfVerticalSeparators as $k => $endPos) {
                     if ($k > 0) {
-                        $data = trim(mb_substr($line, $startPos+1, $endPos-$startPos-1));
-                        if (isset($row[$k-1])) {
-                            if (mb_strlen($row[$k-1]) && mb_strlen($data)) {
-                                $row[$k-1] .= ' ' . $data;
+                        $data = trim(mb_substr($line, $startPos + 1, $endPos - $startPos - 1));
+                        if (isset($row[$k - 1])) {
+                            if (mb_strlen($row[$k - 1]) && mb_strlen($data)) {
+                                $row[$k - 1] .= ' ' . $data;
                             } else {
-                                $row[$k-1] .= $data;
+                                $row[$k - 1] .= $data;
                             }
                         } else {
-                            $row[$k-1] = $data;
+                            $row[$k - 1] = $data;
                         }
                     }
                     $startPos = $endPos;
@@ -126,7 +139,8 @@ class AsciiGrid
         if (!is_array($array)) $array = array($array);
 
         // Count the number of cols needed and the size of a cell
-        $nbOfCols = 0; $cellSize = 1;
+        $nbOfCols = 0;
+        $cellSize = 1;
         foreach ($array as $k => $row) {
             if (!is_array($row)) $array[$k] = $row = array($row);
 
@@ -140,8 +154,8 @@ class AsciiGrid
 
         // Compute the horizontal separator between rows
         $gridLine = self::BOX_DRAWING_INTERSECTION;
-        for ($i=0; $i<$nbOfCols; $i++) {
-            $gridLine .= str_repeat(self::BOX_DRAWING_HORIZONTAL_LINE,  2 * $cellSize + 1) . self::BOX_DRAWING_INTERSECTION;
+        for ($i = 0; $i < $nbOfCols; $i++) {
+            $gridLine .= str_repeat(self::BOX_DRAWING_HORIZONTAL_LINE, 2 * $cellSize + 1) . self::BOX_DRAWING_INTERSECTION;
         }
 
         // Prepare the content by exploding it into multiple lines if needed
@@ -162,7 +176,7 @@ class AsciiGrid
 
                 // For each column ...
                 foreach ($row as $col) {
-                    if (0 == mb_strlen($col[$i])) $col[$i] = str_repeat(' ',  2 * $cellSize - 1);
+                    if (0 == mb_strlen($col[$i])) $col[$i] = str_repeat(' ', 2 * $cellSize - 1);
                     $col[$i] = mb_str_pad($col[$i], 2 * $cellSize - 1, ' ', STR_PAD_BOTH);
                     $grid .= " {$col[$i]} " . self::BOX_DRAWING_VERTICAL_LINE;
                 }
@@ -196,13 +210,10 @@ class AsciiGrid
 
         $spacePositions = strpos_recursive($string, ' ');
 
-        if (0 == count($spacePositions)) return ceil(($stringLength+1)/2);
+        if (0 == count($spacePositions)) return ceil(($stringLength + 1) / 2);
 
-        $n = ceil((1 + sqrt(1 + 4 * $stringLength)) / 4);
-
-        while (!self::doesStringFitInCell($string, $n)) {
-            $n++;
-        }
+        $n = floor((1 + sqrt(1 + 4 * $stringLength)) / 4);
+        while (!self::doesStringFitInCell($string, $n)) $n++;
 
         return $n;
     }
@@ -233,21 +244,19 @@ class AsciiGrid
     {
         $stringArray = explode(' ', $string);
 
-        $cellWidth  = 2 * $cellSize - 1;
+        $cellWidth = 2 * $cellSize - 1;
         $cellHeight = $cellSize;
 
-        $lines = array(); $currentLine = 0;
+        $lines = array();
+        $currentLine = 0;
         foreach ($stringArray as $word) {
             $wordLength = mb_strlen($word);
             if ($cellWidth < $wordLength) throw new CellFitnessException("'{$string}' does not fit in cell of size {$cellSize}");
 
             if (isset($lines[$currentLine])) {
                 $currentLineLength = mb_strlen($lines[$currentLine]);
-                if ($cellWidth > $currentLineLength + $wordLength + 1) {
+                if ($cellWidth >= $currentLineLength + $wordLength + 1) {
                     $lines[$currentLine] .= ' ' . $word;
-                } elseif ($cellWidth == $currentLineLength + $wordLength + 1) {
-                    $lines[$currentLine] .= ' ' . $word;
-                    $currentLine++;
                 } else {
                     $currentLine++;
                     $lines[$currentLine] = $word;
@@ -258,12 +267,12 @@ class AsciiGrid
         }
 
         $linesCount = count($lines);
-        
+
         if ($linesCount > $cellHeight) throw new CellFitnessException("'{$string}' does not fit in cell of size {$cellSize}");
 
         // center vertically the content if needed by padding the array
         if ($linesCount < $cellHeight) {
-            $padTop = floor(($cellHeight-$linesCount)/2);
+            $padTop = floor(($cellHeight - $linesCount) / 2);
 
             $lines = array_pad($lines, -1 * ($linesCount + $padTop), '');
             $lines = array_pad($lines, $cellSize, '');
