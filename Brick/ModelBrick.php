@@ -10,7 +10,12 @@ class ModelBrick extends EventBrick
 {
     public function register(EventDispatcher $eventDispatcher)
     {
-        $listener = new Listener();
-        $eventDispatcher->addListener(Event::GAMECORE_INIT, array($listener, 'onGamecoreInit'));
+        $listener = new Listener($this);
+        $eventDispatcher->addListener(Event::GAMECORE_LOAD, array($listener, 'onGamecoreLoad'));
+    }
+
+    public function notify($data)
+    {
+
     }
 }

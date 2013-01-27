@@ -2,9 +2,9 @@
 
 namespace Gmf\GmfBundle\Tests\Core;
 
-use Gmf\GmfBundle\Brick\ViewBrick;
+use Gmf\GmfBundle\Brick\GameBrick;
 use Gmf\GmfBundle\Core\GameCore;
-use Gmf\GmfBundle\Exception\RenderException;
+use Gmf\GmfBundle\Event\Event;
 
 class GameCoreTests extends \PHPUnit_Framework_TestCase
 {
@@ -13,40 +13,58 @@ class GameCoreTests extends \PHPUnit_Framework_TestCase
      */
     public function testInit()
     {
-        $core = new GameCore();
-        $bricks = $core->getBricks();
+        // init method should raise GameCoreInit event
+        $listener = $this->getMock('\Gmf\GmfBundle\Event\Listener', array('onGameCoreInit'));
+        $listener->expects($this->once())->method('onGameCoreInit');
 
-        $this->assertTrue(is_array($bricks), 'GameCore failed to initialize !');
+        $core = $this->getFakeCore();
+        $core->getEventDispatcher()->addListener(Event::GAMECORE_INIT, array($listener, 'onGameCoreInit'));
 
+        // core should not have bricks yet
+        $this->assertTrue($core->getBricks() == null, 'GameCore failed to initialize !');
+        // core init
+        $core->init();
+        // bricks should be initialized
+        $this->assertTrue(is_array($core->getBricks()), 'GameCore failed to initialize !');
+
+    }
+
+    public function testLoad()
+    {
+        // load should raise GameCoreLoad event
+        $listener = $this->getMock('\Gmf\GmfBundle\Event\Listener', array('onGameCoreLoad'));
+        $listener->expects($this->once())->method('onGameCoreLoad');
+
+        $core = $this->getFakeCore();
+        $core->getEventDispatcher()->addListener(Event::GAMECORE_LOAD, array($listener, 'onGameCoreLoad'));
+        $core->init(); // to delete, replace with a mock
+        $core->load();
+    }
+
+    public function testAddBrick()
+    {
+        $core = $this->getFakeCore();
         // testing add bricks
-        $nbOfBricks = count($bricks);
-        $core->addBrick(new ViewBrick());
+        $core->addBrick(new GameBrick());
         // should one more brick
-        $this->assertEquals($nbOfBricks + 1, count($core->getBricks()), 'GameCore failed to add a brick !');
+        $this->assertEquals(1, count($core->getBricks()), 'GameCore failed to add a brick !');
     }
 
     /**
      * Should return a string
-     *
      */
     public function testRender()
     {
-        $core = new GameCore();
+        $core = $this->getFakeCore();
+        // brick instantiable ?
+        $core->addBrick(new GameBrick());
 
-        $raised = false;
-        try {
-            $core->render();
-        } catch (\Gmf\GmfBundle\Exception\RenderException $e) {
-            $raised = true;
-        }
-        $this->assertTrue($raised, 'It should raise a Render Exception if it has no view brick');
+        $this->assertEquals('', $core->render(), 'It should render nothing if it has an empty view brick');
+    }
 
-        $core->addBrick(new ViewBrick());
-        $render = $core->render();
-
-        $this->assertEquals('', $render, 'It should render nothing if it has an empty view brick');
-
-        // core should have a empty render now
-        //$this->assertNotEquals('', $render, 'GameCore has an empty render !');
+    // use phpunit mock later
+    protected function getFakeCore()
+    {
+        return $core = new GameCore();
     }
 }

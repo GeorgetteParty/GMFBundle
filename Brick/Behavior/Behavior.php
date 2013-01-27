@@ -6,12 +6,10 @@ use Gmf\GmfBundle\Event\Event;
 use Gmf\GmfBundle\Event\Listener;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
-// I don't know if it's useful
+// How brick should behaves (traits ?..)
 class Behavior
 {
     public function doSomething()
     {
-        //$listener = new Listener();
-        //$this->eventDispatcher->addListener(Event::GAMECORE_INIT, array($listener, 'onGamecoreInit'));
     }
 }
