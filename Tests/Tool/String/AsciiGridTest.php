@@ -15,13 +15,9 @@ use Gmf\GmfBundle\Tool\String\AsciiGrid;
 class AsciiGridTest extends \PHPUnit_Framework_TestCase
 {
 
-    public function setUp()
-    {
-    }
+    public function setUp() {}
 
-    public function tearDown()
-    {
-    }
+    public function tearDown() {}
 
     /**
      * @param $message
@@ -98,7 +94,7 @@ EOF
 
             array(
                 "It should read bigger cells and concatenate multiline content",
-                array(array('CORBAC', '&'), array('GT', 'DKP')),
+                array(array('COR BAC', '&'), array('GT', 'D KP')),
                 <<<EOF
 +-----+-----+
 | COR |  &  |
@@ -111,8 +107,8 @@ EOF
             ),
 
             array(
-                "It should read bigger cells and concatenate multiline content",
-                array(array('LUCKY', '777'), array('EARTH&VENUS', '609')),
+                "It should read bigger cells and manage multiline content",
+                array(array('LUCKY', '777'), array('EARTH & VENUS', '6 0 9')),
                 <<<EOF
 +-------+-------+
 |       |       |
@@ -231,6 +227,22 @@ EOF
 EOF
             ),
 
+            array(
+                "It should read bigger cells and manage multiline content",
+                array(array('LUCKY', '777'), array('EARTH & VENUS', '1234')),
+                <<<EOF
++-------+-------+
+|       |       |
+| LUCKY |  777  |
+|       |       |
++-------+-------+
+| EARTH |       |
+|   &   | 1234  |
+| VENUS |       |
++-------+-------+
+EOF
+            ),
+
         );
     }
 
@@ -335,4 +347,41 @@ $unicodeGrid = <<<EOF
 ╚═══╩═══╝
 EOF;
 
-$caca = 'prout';
+$asciiHexGrid = <<<EOF
+          ____
+         /    \
+    ____/      \____
+   /    \      /    \
+  /      \____/      \
+  \      /    \      /
+   \____/      \____/
+   /    \      /    \
+  /      \____/      \
+  \      /    \      /
+   \____/      \____/
+        \      /
+         \____/
+
+EOF;
+
+$unicodeHexGrid = <<<EOF
+          ____
+         ╱    ╲
+    ____╱      ╲____
+   ╱    ╲      ╱    ╲
+  ╱      ╲____╱      ╲
+  ╲      ╱    ╲      ╱
+   ╲____╱      ╲____╱
+   ╱    ╲      ╱    ╲
+  ╱      ╲____╱      ╲
+  ╲      ╱    ╲      ╱
+   ╲____╱      ╲____╱
+        ╲      ╱
+         ╲____╱
+
+EOF;
+
+
+
+
+?>
