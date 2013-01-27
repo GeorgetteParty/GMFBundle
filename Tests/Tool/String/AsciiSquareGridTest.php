@@ -3,7 +3,7 @@
 
 namespace Gmf\GmfBundle\Tests\Tool\String;
 
-use Gmf\GmfBundle\Tool\String\AsciiGrid;
+use Gmf\GmfBundle\Tool\String\AsciiSquareGrid;
 
 // cool link : http://recessiondodgetovictory.wordpress.com/2011/01/12/ascii-chessboard/
 // table generator: http://www.sensefulsolutions.com/2010/10/format-text-as-table.html (use Unicode Art)
@@ -12,7 +12,7 @@ use Gmf\GmfBundle\Tool\String\AsciiGrid;
 /**
  * @author Goutte
  */
-class AsciiGridTest extends \PHPUnit_Framework_TestCase
+class AsciiSquareGridTest extends \PHPUnit_Framework_TestCase
 {
 
     public function setUp() {}
@@ -29,7 +29,7 @@ class AsciiGridTest extends \PHPUnit_Framework_TestCase
      */
     public function testToString($message, $array, $expected)
     {
-        $actual = AsciiGrid::toString($array);
+        $actual = AsciiSquareGrid::toString($array);
 
         $this->assertEquals($expected, $actual, $message);
     }
@@ -44,7 +44,7 @@ class AsciiGridTest extends \PHPUnit_Framework_TestCase
      */
     public function testToArray($message, $expected, $string)
     {
-        $actual = AsciiGrid::toArray($string);
+        $actual = AsciiSquareGrid::toArray($string);
 
         $this->assertEquals($expected, $actual, $message);
     }

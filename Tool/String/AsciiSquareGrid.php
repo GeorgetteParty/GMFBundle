@@ -63,7 +63,7 @@ if (!function_exists('mb_str_pad')) {
  *
  * @author Goutte
  */
-class AsciiGrid
+class AsciiSquareGrid
 {
     const BOX_DRAWING_INTERSECTION = '+';
     const BOX_DRAWING_HORIZONTAL_LINE = '-';
