@@ -2,7 +2,7 @@
 
 namespace Gmf\GmfBundle\Tool\String;
 
-if (!function_exists('strpos_recursive')) {
+if (!function_exists(__NAMESPACE__.'\\'.'strpos_recursive')) {
     /**
      * Returns an array of the positions of $nedle in $haystack, starting at $offset
      *
@@ -25,7 +25,7 @@ if (!function_exists('strpos_recursive')) {
     }
 }
 
-if (!function_exists('mb_str_pad')) {
+if (!function_exists(__NAMESPACE__.'\\'.'mb_str_pad')) {
     /**
      * Multibyte-friendly str_pad
      *

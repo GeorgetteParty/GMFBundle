@@ -108,7 +108,13 @@ EOF
 
             array(
                 "It should interpret NULL as an empty cell",
-                array(array(null)),
+                array(
+                    0 => array(
+                        0 => array(
+                            0 => null,
+                        ),
+                    ),
+                ),
                 <<<EOF
   _____
  /     \
@@ -119,7 +125,13 @@ EOF
             ),
             array(
                 "It should convert single-cell grids",
-                array(array('A')),
+                array(
+                    0 => array(
+                        0 => array(
+                            0 => 'A',
+                        ),
+                    ),
+                ),
                 <<<EOF
   _____
  /     \
@@ -130,7 +142,13 @@ EOF
             ),
             array(
                 "It should work with integers",
-                array(array('7')),
+                array(
+                    0 => array(
+                        0 => array(
+                            0 => '7',
+                        ),
+                    ),
+                ),
                 <<<EOF
   _____
  /     \
@@ -141,7 +159,13 @@ EOF
             ),
             array(
                 "It should work with the underscore symbol (_)",
-                array(array('_____')),
+                array(
+                    0 => array(
+                        0 => array(
+                            0 => '_____',
+                        ),
+                    ),
+                ),
                 <<<EOF
   _____
  /     \
@@ -152,7 +176,13 @@ EOF
             ),
             array(
                 "It should work with the slash symbol (/)",
-                array(array('/')),
+                array(
+                    0 => array(
+                        0 => array(
+                            0 => '/',
+                        ),
+                    ),
+                ),
                 <<<EOF
   _____
  /     \
@@ -163,7 +193,13 @@ EOF
             ),
             array(
                 "It should work with the antislash symbol (\\)",
-                array(array('\\')),
+                array(
+                    0 => array(
+                        0 => array(
+                            0 => '\\',
+                        ),
+                    ),
+                ),
                 <<<EOF
   _____
  /     \
@@ -174,7 +210,14 @@ EOF
             ),
             array(
                 "It should work with any unicode character, if using mb_internal_encoding('UTF-8')",
-                array(array('☯')),
+                array(
+                    0 => array(
+                        0 => array(
+                            0 => '☯',
+                        ),
+                    ),
+                ),
+
                 <<<EOF
   _____
  /     \
@@ -183,11 +226,43 @@ EOF
  \_____/
 EOF
             ),
+            array(
+                "It should position the origin on the topmost/leftmost cell",
+                array(
+                    0 => array(
+                        0 => array(
+                            0 => 'A',
+                        ),
+                    ),
+                    -1 => array(
+                        0 => array(
+                            1 => 'B',
+                        ),
+                    ),
+                    1 => array(
+                        -1 => array(
+                            0 => 'C',
+                        ),
+                    ),
+                ),
+                <<<EOF
+         _____
+        /     \
+  _____/   A   \_____
+ /     \       /     \
+/   B   \_____/   C   \
+\       /     \       /
+ \_____/       \_____/
+EOF
+            ),
 
         );
     }
 
 }
+
+
+
 
 
 

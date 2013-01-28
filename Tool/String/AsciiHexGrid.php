@@ -2,7 +2,7 @@
 
 namespace Gmf\GmfBundle\Tool\String;
 
-if (!function_exists('strpos_recursive')) {
+if (!function_exists(__NAMESPACE__.'\\'.'strpos_recursive')) {
     /**
      * Returns an array of the positions of $nedle in $haystack, starting at $offset
      *
@@ -25,7 +25,7 @@ if (!function_exists('strpos_recursive')) {
     }
 }
 
-if (!function_exists('mb_str_pad')) {
+if (!function_exists(__NAMESPACE__.'\\'.'mb_str_pad')) {
     /**
      * Multibyte-friendly str_pad
      *
@@ -57,9 +57,12 @@ class AsciiHexGrid
     const BOX_DRAWING_DIAGONAL_BL2UR  = '/';
     const BOX_DRAWING_DIAGONAL_BR2UL  = '\\';
 
+    const SIZE = 5;
+
     /**
      * @param  string $string
      * @return array
+     * @throws InvalidAsciiGridException
      */
     static public function toArray($string)
     {
@@ -69,9 +72,38 @@ class AsciiHexGrid
 
         $grid = array();
 
+        // Detect the origin (topmost and then leftmost)
+        $originLeftPos = mb_strpos($arrayOfLines[0], str_repeat(self::BOX_DRAWING_HORIZONTAL_LINE, self::SIZE));
+        if (false === $originLeftPos) throw new InvalidAsciiGridException();
+
+        $originContent = self::extractContentOfCellWhoseTopLeftIs(0, $originLeftPos, $arrayOfLines);
+
+        self::addCellToArray($grid, 0, 0, 0, $originContent);
+
         // fixme
 
         return $grid;
+    }
+
+    static protected function extractContentOfCellWhoseTopLeftIs($top, $left, $arrayOfLines)
+    {
+        $line1 = trim(mb_substr($arrayOfLines[$top+2], $left, self::SIZE));
+        $line2 = trim(mb_substr($arrayOfLines[$top+3], $left, self::SIZE));
+
+        $content = $line1;
+
+        if (mb_strlen($line2)) $content .= ' ' . $line2;
+
+        return $content;
+    }
+
+    static protected function addCellToArray(&$array, $x, $y, $z, $value)
+    {
+        if (!isset($array[$x]))     $array[$x] = array();
+        if (!isset($array[$x][$y])) $array[$x][$y] = array();
+        if (isset($array[$x][$y][$z])) throw new \Exception("There already is a value at {$x}/{$y}/{$z}.");
+
+        $array[$x][$y][$z] = $value;
     }
 
     /**
