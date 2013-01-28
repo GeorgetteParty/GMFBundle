@@ -65,9 +65,9 @@ if (!function_exists('mb_str_pad')) {
  */
 class AsciiSquareGrid
 {
-    const BOX_DRAWING_INTERSECTION = '+';
+    const BOX_DRAWING_INTERSECTION    = '+';
     const BOX_DRAWING_HORIZONTAL_LINE = '-';
-    const BOX_DRAWING_VERTICAL_LINE = '|';
+    const BOX_DRAWING_VERTICAL_LINE   = '|';
 
     /**
      * @param  string $string
