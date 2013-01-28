@@ -42,12 +42,12 @@ if (!function_exists('mb_str_pad')) {
 }
 
 /**
- * Manages the conversion between simple ascii grids and 2D arrays
+ * Manages the conversion between simple ascii square grids and 2D PHP arrays
  *
  * Please set (if you are using Unicode characters) :
  * mb_internal_encoding('UTF-8');
  *
- * See Gmf\GmfBundle\Tests\Tool\String\AsciiGridTest for documentation on how this behaves
+ * See Gmf\GmfBundle\Tests\Tool\String\AsciiSquareGridTest for documentation on how this behaves
  *
  * Usage example :
  *
