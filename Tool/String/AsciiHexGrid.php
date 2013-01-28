@@ -72,15 +72,34 @@ class AsciiHexGrid
 
         $grid = array();
 
+        $horizontalSeparator = str_repeat(self::BOX_DRAWING_HORIZONTAL_LINE, self::SIZE);
+
         // Detect the origin (topmost and then leftmost)
-        $originLeftPos = mb_strpos($arrayOfLines[0], str_repeat(self::BOX_DRAWING_HORIZONTAL_LINE, self::SIZE));
+        $originLeftPos = mb_strpos($arrayOfLines[0], $horizontalSeparator);
         if (false === $originLeftPos) throw new InvalidAsciiGridException();
-
         $originContent = self::extractContentOfCellWhoseTopLeftIs(0, $originLeftPos, $arrayOfLines);
-
         self::addCellToArray($grid, 0, 0, 0, $originContent);
 
-        // fixme
+
+        $n = 0;
+        while (isset($arrayOfLines[$n])) {
+            $line = $arrayOfLines[$n];
+            $positions = strpos_recursive($line, $horizontalSeparator);
+
+            foreach ($positions as $position) {
+                if (0 === $n && $position === $originLeftPos) continue;
+
+                if (isset($arrayOfLines[$n+4]) && mb_substr($arrayOfLines[$n+4], $position, self::SIZE) == $horizontalSeparator) {
+                    $content = self::extractContentOfCellWhoseTopLeftIs($n, $position, $arrayOfLines);
+                    $x = ($position - $originLeftPos) / (self::SIZE + 2);
+                    $y = -1 * (2 * $x + $n) / 4;
+                    $z = -1 * ($x+$y);
+                    self::addCellToArray($grid, $x, $y, $z, $content);
+                }
+            }
+
+            $n += 2;
+        }
 
         return $grid;
     }
@@ -99,8 +118,8 @@ class AsciiHexGrid
 
     static protected function addCellToArray(&$array, $x, $y, $z, $value)
     {
-        if (!isset($array[$x]))     $array[$x] = array();
-        if (!isset($array[$x][$y])) $array[$x][$y] = array();
+        if (!isset($array[$x]))        $array[$x] = array();
+        if (!isset($array[$x][$y]))    $array[$x][$y] = array();
         if (isset($array[$x][$y][$z])) throw new \Exception("There already is a value at {$x}/{$y}/{$z}.");
 
         $array[$x][$y][$z] = $value;
