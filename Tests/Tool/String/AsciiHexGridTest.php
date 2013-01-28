@@ -301,6 +301,70 @@ $unicodeHexGrid = <<<EOF
 EOF;
 
 
+// TwoPerpendicularAxisCoordinateSystem
+
+$unicodeHexGrid = <<<EOF
+           y
+         _____
+        ╱     ╲
+  _____╱  0  2 ╲_____
+ ╱     ╲       ╱     ╲
+╱ -1  1 ╲_____╱  1  1 ╲
+╲       ╱     ╲       ╱
+ ╲_____╱  0  0 ╲_____╱   x
+ ╱     ╲       ╱     ╲
+╱ -1 -1 ╲_____╱  1 -1 ╲
+╲       ╱     ╲       ╱
+ ╲_____╱  0 -2 ╲_____╱
+       ╲       ╱
+        ╲_____╱
+
+EOF;
+
+
+// TwoAxisCoordinateSystem
+
+$unicodeHexGrid = <<<EOF
+           y
+         _____
+        ╱     ╲
+  _____╱  0  1 ╲_____
+ ╱     ╲       ╱     ╲ x
+╱ -1  1 ╲_____╱  1  0 ╲
+╲       ╱     ╲       ╱
+ ╲_____╱  0  0 ╲_____╱
+ ╱     ╲       ╱     ╲
+╱ -1  0 ╲_____╱  1 -1 ╲
+╲       ╱     ╲       ╱
+ ╲_____╱  0 -1 ╲_____╱
+       ╲       ╱
+        ╲_____╱
+
+EOF;
+
+
+// ThreeSymmetricalAxisCoordinateSystem
+// => the most elegant !
+// x+y+z = 0
+
+$unicodeHexGrid = <<<EOF
+         _____
+     y  ╱     ╲
+  _____╱ 0 1-1 ╲_____
+ ╱     ╲       ╱     ╲
+╱-1 1 0 ╲_____╱ 1 0-1 ╲
+╲       ╱     ╲       ╱
+ ╲_____╱ 0 0 0 ╲_____╱  x
+ ╱     ╲       ╱     ╲
+╱-1 0 1 ╲_____╱ 1-1 0 ╲
+╲       ╱     ╲       ╱
+ ╲_____╱ 0-1 1 ╲_____╱
+       ╲       ╱
+    z   ╲_____╱
+
+EOF;
+
+
 
 
 
