@@ -6,7 +6,7 @@ use Gmf\GmfBundle\Event\Event;
 use Gmf\GmfBundle\Event\Listener;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
-trait Dispatchable
+trait Dispatchable // implements \Gmf\GmfBundle\Interfaces\Dispatchable
 {
     /**
      * @var EventDispatcher
