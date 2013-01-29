@@ -88,6 +88,17 @@ EOF
  \_____/
 EOF
             ),
+            array(
+                "It should interpret NULL as an empty cell",
+                array(0 => array(0 => array(0 => null))),
+                <<<EOF
+  _____
+ /     \
+/       \
+\       /
+ \_____/
+EOF
+            ),
         );
 
         return array_merge($this->reciprocalTransformationProvider(), $r);
@@ -107,11 +118,11 @@ EOF
         return array(
 
             array(
-                "It should interpret NULL as an empty cell",
+                "It should interpret an empty string as an empty cell",
                 array(
                     0 => array(
                         0 => array(
-                            0 => null,
+                            0 => '',
                         ),
                     ),
                 ),

@@ -2,6 +2,10 @@
 
 namespace Gmf\GmfBundle\Tool\String;
 
+if (!defined('PHP_INT_MIN')) {
+    define('PHP_INT_MIN', ~PHP_INT_MAX);
+}
+
 if (!function_exists(__NAMESPACE__.'\\'.'strpos_recursive')) {
     /**
      * Returns an array of the positions of $nedle in $haystack, starting at $offset
@@ -78,8 +82,7 @@ class AsciiHexGrid
         $originLeftPos = mb_strpos($arrayOfLines[0], $horizontalSeparator);
         if (false === $originLeftPos) throw new InvalidAsciiGridException();
         $originContent = self::extractContentOfCellWhoseTopLeftIs(0, $originLeftPos, $arrayOfLines);
-        self::addCellToArray($grid, 0, 0, 0, $originContent);
-
+        self::addCellTo3DArray($grid, 0, 0, 0, $originContent);
 
         $n = 0;
         while (isset($arrayOfLines[$n])) {
@@ -94,7 +97,7 @@ class AsciiHexGrid
                     $x = ($position - $originLeftPos) / (self::SIZE + 2);
                     $y = -1 * (2 * $x + $n) / 4;
                     $z = -1 * ($x+$y);
-                    self::addCellToArray($grid, $x, $y, $z, $content);
+                    self::addCellTo3DArray($grid, $x, $y, $z, $content);
                 }
             }
 
@@ -116,7 +119,7 @@ class AsciiHexGrid
         return $content;
     }
 
-    static protected function addCellToArray(&$array, $x, $y, $z, $value)
+    static protected function addCellTo3DArray(&$array, $x, $y, $z, $value)
     {
         if (!isset($array[$x]))        $array[$x] = array();
         if (!isset($array[$x][$y]))    $array[$x][$y] = array();
@@ -133,13 +136,98 @@ class AsciiHexGrid
      */
     static public function toString($array)
     {
-        if (!is_array($array)) $array = array($array);
+        if (!is_array($array)) $array = array(0=>array(0=>array(0=>$array)));
 
-        $grid = '';
+        $grid = array();
 
-        // fixme
+        foreach ($array as $x => $xArray) {
+            foreach ($xArray as $y => $yArray) {
+                foreach ($yArray as $z => $value) {
+                    $a = $x * 7;
+                    $b = 0; // fixme
+                    self::writeHexagonIntoArray($grid, $a, $b, $value);
+                }
+            }
+        }
 
-        return $grid;
+
+
+        $xMin = $yMin = PHP_INT_MAX;
+        $xMax = $yMax = PHP_INT_MIN;
+        foreach ($grid as $x => $row) {
+            $xMin = min($x, $xMin);
+            $xMax = max($x, $xMax);
+            foreach ($row as $y => $col) {
+                $yMin = min($y, $yMin);
+                $yMax = max($y, $yMax);
+            }
+        }
+
+        $string = '';
+
+        for ($y=$yMin; $y<=$yMax; $y++) {
+            for ($x=$xMin; $x<=$xMax; $x++) {
+                if (isset($grid[$x][$y])) {
+                    $string .= $grid[$x][$y];
+                } else {
+                    $string .= ' ';
+                }
+            }
+            $string = rtrim($string);
+
+            if ($y < $yMax) $string .= PHP_EOL;
+        }
+
+        return $string;
+    }
+
+    static protected function writeHexagonIntoArray(&$array, $x, $y, $value)
+    {
+        $size = self::SIZE;
+
+        // top & bottom sides
+        for ($i=0; $i<$size; $i++) {
+            self::addCellTo2DArray($array, $x+$i, $y,   self::BOX_DRAWING_HORIZONTAL_LINE);
+            self::addCellTo2DArray($array, $x+$i, $y+4, self::BOX_DRAWING_HORIZONTAL_LINE);
+        }
+
+        // left side
+        self::addCellTo2DArray($array, $x-1, $y+1, self::BOX_DRAWING_DIAGONAL_BL2UR);
+        self::addCellTo2DArray($array, $x-2, $y+2, self::BOX_DRAWING_DIAGONAL_BL2UR);
+        self::addCellTo2DArray($array, $x-2, $y+3, self::BOX_DRAWING_DIAGONAL_BR2UL);
+        self::addCellTo2DArray($array, $x-1, $y+4, self::BOX_DRAWING_DIAGONAL_BR2UL);
+
+        // right side
+        self::addCellTo2DArray($array, $x+$size+0, $y+1, self::BOX_DRAWING_DIAGONAL_BR2UL);
+        self::addCellTo2DArray($array, $x+$size+1, $y+2, self::BOX_DRAWING_DIAGONAL_BR2UL);
+        self::addCellTo2DArray($array, $x+$size+1, $y+3, self::BOX_DRAWING_DIAGONAL_BL2UR);
+        self::addCellTo2DArray($array, $x+$size+0, $y+4, self::BOX_DRAWING_DIAGONAL_BL2UR);
+
+        // value
+        if (mb_strlen($value) > $size) {
+
+            // fixme
+            $value1 = mb_str_pad($value, $size, ' ', STR_PAD_BOTH);
+            $value2 = mb_str_pad('',     $size, ' ', STR_PAD_BOTH);
+
+        } else {
+            $value1 = mb_str_pad($value, $size, ' ', STR_PAD_BOTH);
+            $value2 = mb_str_pad('',     $size, ' ', STR_PAD_BOTH);
+        }
+        for ($i=0; $i<$size; $i++) {
+            self::addCellTo2DArray($array, $x+$i, $y+2, mb_substr($value1, $i, 1));
+            self::addCellTo2DArray($array, $x+$i, $y+3, mb_substr($value2, $i, 1));
+        }
+
+    }
+
+
+    static protected function addCellTo2DArray(&$array, $x, $y, $value)
+    {
+        if (!isset($array[$x]))    $array[$x] = array();
+        if (isset($array[$x][$y])) throw new \Exception("There already is a value at {$x}/{$y}.");
+
+        $array[$x][$y] = $value;
     }
 
 }
