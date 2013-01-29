@@ -7,6 +7,48 @@ use Gmf\GmfBundle\Tool\String\AsciiHexGrid;
 
 // http://www-cs-students.stanford.edu/~amitp/Articles/Hexagon2.html
 
+if (!function_exists(__NAMESPACE__.'\\'.'array_merge_recursive_with_strict_keys')) {
+    /**
+     * Merges passed arrays into one, but keeps keys
+     *
+     * @return array|bool
+     */
+    function array_merge_recursive_with_strict_keys()
+    {
+        if (func_num_args() < 2) {
+            trigger_error(__FUNCTION__ .' needs two or more array arguments', E_USER_WARNING);
+            return false;
+        }
+
+        $arrays = func_get_args();
+        $merged = array();
+
+        while ($arrays) {
+            $array = array_shift($arrays);
+
+            if (!is_array($array)) {
+                trigger_error(__FUNCTION__ .' encountered a non array argument', E_USER_WARNING);
+                return false;
+            }
+
+            if (!$array) continue;
+
+            foreach ($array as $key => $value) {
+                if (is_array($value) && array_key_exists($key, $merged) && is_array($merged[$key]))
+                    $merged[$key] = call_user_func(__FUNCTION__, $merged[$key], $value);
+                else
+                    $merged[$key] = $value;
+            }
+        }
+
+        return $merged;
+    }
+}
+
+
+
+
+
 /**
  * @author Goutte
  */
@@ -51,32 +93,6 @@ class AsciiHexGridTest extends \PHPUnit_Framework_TestCase
     public function arrayToStringProvider()
     {
         $r = array(
-            array(
-                "It should convert an unidimensional array into a column",
-                array('A', 'B'),
-                <<<EOF
-  _____
- /     \
-/   A   \
-\       /
- \_____/
- /     \
-/   B   \
-\       /
- \_____/
-EOF
-            ),
-            array(
-                "It should convert an array with a single element into a single cell",
-                array('A'),
-                <<<EOF
-  _____
- /     \
-/   A   \
-\       /
- \_____/
-EOF
-            ),
             array(
                 "It should convert an non-array into a single cell",
                 'A',
@@ -238,24 +254,14 @@ EOF
 EOF
             ),
             array(
-                "It should position the origin on the topmost/leftmost cell",
-                array(
-                    0 => array(
-                        0 => array(
-                            0 => 'A',
-                        ),
-                    ),
-                    -1 => array(
-                        0 => array(
-                            1 => 'B',
-                        ),
-                    ),
-                    1 => array(
-                        -1 => array(
-                            0 => 'C',
-                        ),
-                    ),
+                "It should position the origin on the topmost/leftmost cell the closest of the median",
+
+                array_merge_recursive_with_strict_keys(
+                    $this->buildArray('A',  0,  0,  0),
+                    $this->buildArray('B', -1,  0,  1),
+                    $this->buildArray('C',  1, -1,  0)
                 ),
+
                 <<<EOF
          _____
         /     \
@@ -266,8 +272,67 @@ EOF
  \_____/       \_____/
 EOF
             ),
+            array(
+                "It should position the origin on the topmost/leftmost cell the closest of the median cell",
+
+                array_merge_recursive_with_strict_keys(
+                    $this->buildArray('A',  0,  0,  0),
+                    $this->buildArray('B', -1,  0,  1),
+                    $this->buildArray('C',  1, -1,  0),
+                    $this->buildArray('D',  0, -1,  1)
+                ),
+
+                <<<EOF
+         _____
+        /     \
+  _____/   A   \_____
+ /     \       /     \
+/   B   \_____/   C   \
+\       /     \       /
+ \_____/   D   \_____/
+       \       /
+        \_____/
+EOF
+            ),
+            array(
+                "It should position the origin on the median cell",
+
+                array_merge_recursive_with_strict_keys(
+                    $this->buildArray('O',  0,  0,  0),
+                    $this->buildArray('A',  0,  1, -1),
+                    $this->buildArray('B', -1,  1,  0),
+                    $this->buildArray('C', -1,  0,  1),
+                    $this->buildArray('D',  0, -1,  1),
+                    $this->buildArray('E',  1, -1,  0),
+                    $this->buildArray('F',  1,  0, -1)
+                ),
+
+                <<<EOF
+         _____
+        /     \
+  _____/   A   \_____
+ /     \       /     \
+/   B   \_____/   F   \
+\       /     \       /
+ \_____/   O   \_____/
+ /     \       /     \
+/   C   \_____/   E   \
+\       /     \       /
+ \_____/   D   \_____/
+       \       /
+        \_____/
+EOF
+            ),
 
         );
+    }
+
+
+
+
+    public function buildArray($value, $x, $y, $z)
+    {
+        return array($x => array($y => array($z => $value)));
     }
 
 }
@@ -429,7 +494,7 @@ $unicodeHexGrid = <<<EOF
 EOF;
 
 
-// ThreeSymmetricalAxisCoordinateSystem
+// IsometricCubeCoordinateSystem
 // => the most elegant !
 // x+y+z = 0
 
