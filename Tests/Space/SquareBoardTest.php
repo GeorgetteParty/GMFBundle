@@ -18,6 +18,9 @@ class SquareBoard implements \Gmf\GmfBundle\Space\Lattice
 
 class SquareBoardTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @var SquareBoard
+     */
     protected $board;
 
     public function setUp()
@@ -43,62 +46,48 @@ class SquareBoardTest extends \PHPUnit_Framework_TestCase
         // $cell = 2D-able Cell at [0,0]
         //$found = $this->board->findAdjacentOf($cell);
         // compare with {[-1,0],[0,1],[0,-1],[1,0]}
-        // do "corners" count as adjacency ?
+        // do "corners" count as adjacency ? -- Assume yes
 
         // dumping some ascii/unicode grids
-        // cool link : http://recessiondodgetovictory.wordpress.com/2011/01/12/ascii-chessboard/
-        // table generator: http://www.sensefulsolutions.com/2010/10/format-text-as-table.html (use Unicode Art)
-        // text generator : http://www.network-science.de/ascii/ and http://patorjk.com/software/taag/
 
-$asciiGrid = <<<EOF
-+---+---+
-|   |   |
-+---+---+
-|   |   |
-+---+---+
+        $asciiSquareBoard = <<<EOF
++---+---+---+---+---+---+---+---+
+| a | b | c | d | e | f | g | h |
++---+---+---+---+---+---+---+---+
+| i | j | k | l | m | n | o | p |
++---+---+---+---+---+---+---+---+
+| q | r | s | t | u | v | w | x |
++---+---+---+---+---+---+---+---+
+| y | z | 0 | 3 | 4 | 7 | 8 | . |
++---+---+---+---+---+---+---+---+
+| Y | Z | 1 | 2 | 5 | 6 | 9 | 0 |
++---+---+---+---+---+---+---+---+
+| Q | R | S | T | U | V | W | X |
++---+---+---+---+---+---+---+---+
+| I | J | K | L | M | N | O | P |
++---+---+---+---+---+---+---+---+
+| A | B | C | D | E | F | G | H |
++---+---+---+---+---+---+---+---+
 EOF;
 
-
-$unicodeGrid = <<<EOF
-┌───┬───┐
-│   │   │
-├───┼───┤
-│   │   │
-└───┴───┘
-EOF;
-
-
-$unicodeGrid = <<<EOF
-┌─────┬─────┐
-│     │     │
-│     │     │
-├─────┼─────┤
-│     │     │
-│     │     │
-└─────┴─────┘
-EOF;
-
-
-$unicodeGrid = <<<EOF
-┌───────┬───────┐
-│       │       │
-│       │       │
-│       │       │
-├───────┼───────┤
-│       │       │
-│       │       │
-│       │       │
-└───────┴───────┘
-EOF;
-
-
-
-$unicodeGrid = <<<EOF
-╔═══╦═══╗
-║   ║   ║
-╠═══╬═══╣
-║   ║   ║
-╚═══╩═══╝
+        $asciiChessBoard = <<<EOF
++---+---+---+---+---+---+---+---+
+| ♜ | ♞ | ♝ | ♛ | ♚ | ♝ | ♞ | ♜ |
++---+---+---+---+---+---+---+---+
+| ♟ | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ |
++---+---+---+---+---+---+---+---+
+|   |   |   |   |   |   |   |   |
++---+---+---+---+---+---+---+---+
+|   |   |   |   |   |   |   |   |
++---+---+---+---+---+---+---+---+
+|   |   |   |   |   |   |   |   |
++---+---+---+---+---+---+---+---+
+|   |   |   |   |   |   |   |   |
++---+---+---+---+---+---+---+---+
+| ♙ | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ |
++---+---+---+---+---+---+---+---+
+| ♖ | ♘ | ♗ | ♕ | ♔ | ♗ | ♘ | ♖ |
++---+---+---+---+---+---+---+---+
 EOF;
 
     }
