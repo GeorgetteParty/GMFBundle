@@ -4,19 +4,23 @@ namespace Gmf\GmfBundle\Core;
 
 use Gmf\GmfBundle\Brick\GameBrick;
 use Gmf\GmfBundle\Event\Event;
+use Gmf\GmfBundle\Traits\Dispatchable;
+use Gmf\GmfBundle\Traits\Snapshotable;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
 class GameCore
 {
     /**
+     * Dispatchable: GameCore should be able to dispatch event and register listeners
+     * Snapshotable: GameCore should be able to load and save his context
+     */
+    use Dispatchable, Snapshotable;
+
+    /**
      * @var GameBrick[]
      */
     protected $bricks;
 
-    /**
-     * @var EventDispatcher
-     */
-    protected $eventDispatcher;
 
     public function __construct()
     {
@@ -59,10 +63,5 @@ class GameCore
     public function getBricks()
     {
         return $this->bricks;
-    }
-
-    public function getEventDispatcher()
-    {
-        return $this->eventDispatcher;
     }
 }

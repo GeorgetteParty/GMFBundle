@@ -18,10 +18,10 @@ class GameCoreTests extends \PHPUnit_Framework_TestCase
         $listener->expects($this->once())->method('onGameCoreInit');
 
         $core = $this->getFakeCore();
-        $core->getEventDispatcher()->addListener(Event::GAMECORE_INIT, array($listener, 'onGameCoreInit'));
+        $core->addListener(Event::GAMECORE_INIT, $listener, 'onGameCoreInit');
 
         // core should not have bricks yet
-        $this->assertTrue($core->getBricks() == null, 'GameCore failed to initialize !');
+        $this->assertNull($core->getBricks(), 'GameCore failed to initialize !');
         // core init
         $core->init();
         // bricks should be initialized
@@ -29,6 +29,9 @@ class GameCoreTests extends \PHPUnit_Framework_TestCase
 
     }
 
+    /**
+     * Should load data ?
+     */
     public function testLoad()
     {
         // load should raise GameCoreLoad event
@@ -36,9 +39,21 @@ class GameCoreTests extends \PHPUnit_Framework_TestCase
         $listener->expects($this->once())->method('onGameCoreLoad');
 
         $core = $this->getFakeCore();
-        $core->getEventDispatcher()->addListener(Event::GAMECORE_LOAD, array($listener, 'onGameCoreLoad'));
-        $core->init(); // to delete, replace with a mock
+        $core->addListener(Event::GAMECORE_LOAD, $listener, 'onGameCoreLoad');
+        $core->init(); // to delete, replace with a core already initiated
         $core->load();
+    }
+
+    /**
+     * Should save current core context to string
+     */
+    public function testSave()
+    {
+        $core = $this->getFakeCore();
+        $save = $core->save();
+
+        // save should return a string ?
+        $this->assertNotNull($save);
     }
 
     public function testAddBrick()
