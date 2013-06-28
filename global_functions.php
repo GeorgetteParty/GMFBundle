@@ -2,8 +2,15 @@
 
 /**
  * This file exists because functions in namespaces are a world of hurt.
+ * Some functions deserve a place as globals, when they're consistent with the inbuilt php functions.
+ * Prefer Static methods when it makes sense.
+ *
+ * todo : find a way to add this dep. via composer
  *
  * Functions are sorted alphabetically.
+ *
+ * Maths deserve a place as global.
+ * Array manipulation too.
  *
  *
  */

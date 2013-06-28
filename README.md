@@ -8,3 +8,4 @@ Dependencies
 
 - Composer
 - PHP >= 5.4
+- global_functions.php

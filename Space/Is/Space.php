@@ -1,6 +1,6 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Space;
+namespace Goutte\QuadsphereGoBundle\Space\Is;
 
 /**
  * This is a WIP with no particular goal

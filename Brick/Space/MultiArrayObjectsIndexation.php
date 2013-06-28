@@ -7,7 +7,7 @@ use GeorgetteParty\UnicodeTesselationBundle\Iterator\CubeFacesIterator;
 use Goutte\QuadsphereGoBundle\Exception\InvalidCoordinatesException;
 use Goutte\QuadsphereGoBundle\Is\Analyzable;
 use Goutte\QuadsphereGoBundle\Space\Coordinates;
-use Goutte\QuadsphereGoBundle\Space\Positionable;
+use Goutte\QuadsphereGoBundle\Space\Is\Positionable;
 use Goutte\QuadsphereGoBundle\Util\MultiArrayIndex;
 use Symfony\Component\Config\Definition\Exception\Exception;
 

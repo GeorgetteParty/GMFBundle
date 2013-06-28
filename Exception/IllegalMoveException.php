@@ -6,6 +6,10 @@ namespace Goutte\QuadsphereGoBundle\Exception;
  * Can pass the array of coordinates (x,y,z) as second parameter,
  * it will be automatically dumped at the end of the message.
  *
+ * todo: It should accept a Move, not coordinates.
+ *
+ * This is also a base class for you Exceptions.
+ *
  * Class IllegalMoveException
  * @package Goutte\QuadsphereGoBundle\Exception
  */

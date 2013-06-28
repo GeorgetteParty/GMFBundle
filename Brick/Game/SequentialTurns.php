@@ -2,8 +2,7 @@
 
 namespace Goutte\QuadsphereGoBundle\Brick\Game;
 
-use Exception;
-use Goutte\QuadsphereGoBundle\Is\Game;
+use InvalidArgumentException;
 use Goutte\QuadsphereGoBundle\Is\Player;
 
 trait SequentialTurns // implements TurnBasedGame
@@ -47,7 +46,7 @@ trait SequentialTurns // implements TurnBasedGame
      * Moves to next Player
      *
      * @param Player $player
-     * @throws \Exception
+     * @throws InvalidArgumentException
      */
     public function endOfTurn(Player $player)
     {
@@ -56,7 +55,7 @@ trait SequentialTurns // implements TurnBasedGame
         $k = array_search($player, $players);
 
         if (false === $k) {
-            throw new Exception("This player is not in the game");
+            throw new InvalidArgumentException("This player is not in the game");
         }
 
         $nextPlayer = $players[(($k+1)%count($players))];

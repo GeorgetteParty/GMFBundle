@@ -1,6 +1,6 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Space;
+namespace Goutte\QuadsphereGoBundle\Space\Is;
 
 use Goutte\QuadsphereGoBundle\Space\Coordinates;
 
