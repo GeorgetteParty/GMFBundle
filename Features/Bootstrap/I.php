@@ -1,0 +1,24 @@
+<?php
+
+namespace Goutte\QuadsphereGoBundle\Features\Bootstrap;
+
+use Behat\Behat\Exception\BehaviorException;
+use Goutte\QuadsphereGoBundle\Model\GoPlayer;
+
+trait I
+{
+
+    /**
+     * @var GoPlayer
+     */
+    protected $I;
+
+    public function I()
+    {
+        if (empty($this->I)) {
+            throw new BehaviorException("There's no I !");
+        }
+        return $this->I;
+    }
+
+}
