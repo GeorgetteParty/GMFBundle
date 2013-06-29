@@ -1,8 +1,8 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Brick\Unit;
+namespace GeorgetteParty\GMFBundle\Brick\Unit;
 
-use Goutte\QuadsphereGoBundle\Is\Player;
+use GeorgetteParty\GMFBundle\Is\Player;
 
 /**
  * Use this, and then

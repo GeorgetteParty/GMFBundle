@@ -1,6 +1,6 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Space\Coordinates;
+namespace GeorgetteParty\GMFBundle\Space\Coordinates;
 
 /**
  * XYZ api for Coordinates with (at least) 3 numeric components.

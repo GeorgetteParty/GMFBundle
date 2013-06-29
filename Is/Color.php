@@ -1,6 +1,6 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Is;
+namespace GeorgetteParty\GMFBundle\Is;
 
 /**
  * TODO : think on a proper API for the Color contract
@@ -14,7 +14,7 @@ namespace Goutte\QuadsphereGoBundle\Is;
  * used for sctrict typing
  *
  * Interface Color
- * @package Goutte\QuadsphereGoBundle\Is
+ * @package GeorgetteParty\GMFBundle\Is
  */
 interface Color {
     //public function rgb(); // getter/setter array of 3 integers

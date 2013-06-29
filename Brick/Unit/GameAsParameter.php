@@ -1,8 +1,8 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Brick\Unit;
+namespace GeorgetteParty\GMFBundle\Brick\Unit;
 
-use Goutte\QuadsphereGoBundle\Is\Game;
+use GeorgetteParty\GMFBundle\Is\Game;
 
 /**
  * Use this, and then

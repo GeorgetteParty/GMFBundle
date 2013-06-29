@@ -1,13 +1,13 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Exception;
+namespace GeorgetteParty\GMFBundle\Exception;
 
 /**
  * Can pass the Coordinates as second parameter,
  * they will be automatically dumped at the end of the message.
  *
  * Class IllegalMoveException
- * @package Goutte\QuadsphereGoBundle\Exception
+ * @package GeorgetteParty\GMFBundle\Exception
  */
 class InvalidCoordinatesException extends \Exception
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Brick\Game;
+namespace GeorgetteParty\GMFBundle\Brick\Game;
 
 use InvalidArgumentException;
-use Goutte\QuadsphereGoBundle\Is\Player;
+use GeorgetteParty\GMFBundle\Is\Player;
 
 trait SequentialTurns // implements TurnBasedGame
 {

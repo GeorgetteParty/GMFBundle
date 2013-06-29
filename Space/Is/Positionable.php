@@ -1,8 +1,8 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Space\Is;
+namespace GeorgetteParty\GMFBundle\Space\Is;
 
-use Goutte\QuadsphereGoBundle\Space\Coordinates;
+use GeorgetteParty\GMFBundle\Space\Coordinates;
 
 /**
  * Implement in any object that has coordinates in space.
@@ -11,7 +11,7 @@ use Goutte\QuadsphereGoBundle\Space\Coordinates;
  * I also like Spatial, as a name.
  *
  * Interface Positionable
- * @package Goutte\QuadsphereGoBundle\Is
+ * @package GeorgetteParty\GMFBundle\Is
  */
 interface Positionable
 {

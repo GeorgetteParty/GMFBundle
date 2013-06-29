@@ -1,6 +1,6 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Util;
+namespace GeorgetteParty\GMFBundle\Util;
 
 use ArrayObject;
 
@@ -9,7 +9,7 @@ use ArrayObject;
  * These arrays are used for Indexation
  *
  * Class MultiArrayIndex
- * @package Goutte\QuadsphereGoBundle\Util
+ * @package GeorgetteParty\GMFBundle\Util
  */
 class MultiArrayIndex
 {

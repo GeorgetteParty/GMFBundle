@@ -1,14 +1,14 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Features\Bootstrap;
+namespace GeorgetteParty\GMFBundle\Features\Bootstrap;
 
 use Behat\Behat\Exception\BehaviorException;
 use Behat\Behat\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode;
-use Goutte\QuadsphereGoBundle\Exception\IllegalMoveException;
-use Goutte\QuadsphereGoBundle\Model\GoBoard;
-use Goutte\QuadsphereGoBundle\Model\GoGame;
-use Goutte\QuadsphereGoBundle\Model\GoPlayer;
+use GeorgetteParty\GMFBundle\Exception\IllegalMoveException;
+use GeorgetteParty\GMFBundle\Model\GoBoard;
+use GeorgetteParty\GMFBundle\Model\GoGame;
+use GeorgetteParty\GMFBundle\Model\GoPlayer;
 
 trait GameContext
 {

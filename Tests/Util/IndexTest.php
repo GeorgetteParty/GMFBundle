@@ -1,10 +1,10 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Tests;
+namespace GeorgetteParty\GMFBundle\Tests;
 
 use Exception;
-//use Goutte\QuadsphereGoBundle\Util\Index;
-use Goutte\QuadsphereGoBundle\Util\MultiArrayIndex as Index;
+//use GeorgetteParty\GMFBundle\Util\Index;
+use GeorgetteParty\GMFBundle\Util\MultiArrayIndex as Index;
 
 /**
  * WIP
@@ -12,7 +12,7 @@ use Goutte\QuadsphereGoBundle\Util\MultiArrayIndex as Index;
  * 
  * 
  * Class IndexTest
- * @package Goutte\QuadsphereGoBundle\Tests
+ * @package GeorgetteParty\GMFBundle\Tests
  */
 class IndexTest extends \PHPUnit_Framework_TestCase
 {

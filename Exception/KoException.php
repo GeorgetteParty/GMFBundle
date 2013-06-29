@@ -1,12 +1,12 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Exception;
+namespace GeorgetteParty\GMFBundle\Exception;
 
 /**
  * For cases when Move creates an infinite loop.
  *
  * Class KoException
- * @package Goutte\QuadsphereGoBundle\Exception
+ * @package GeorgetteParty\GMFBundle\Exception
  */
 class KoException extends IllegalMoveException
 {

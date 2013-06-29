@@ -1,6 +1,6 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Util;
+namespace GeorgetteParty\GMFBundle\Util;
 
 use Exception;
 
@@ -17,7 +17,7 @@ use Exception;
  * @deprecated
  *
  * Class Math
- * @package Goutte\QuadsphereGoBundle\Util
+ * @package GeorgetteParty\GMFBundle\Util
  */
 class Math
 {

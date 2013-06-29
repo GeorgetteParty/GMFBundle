@@ -1,6 +1,6 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Is;
+namespace GeorgetteParty\GMFBundle\Is;
 
 interface Analyzable {
     public function analyze();

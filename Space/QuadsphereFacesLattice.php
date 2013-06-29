@@ -1,15 +1,15 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Space;
+namespace GeorgetteParty\GMFBundle\Space;
 
 use GeorgetteParty\UnicodeTesselationBundle\Driver\Cube;
 use GeorgetteParty\UnicodeTesselationBundle\Iterator\CubeFacesIterator;
 
-use Goutte\QuadsphereGoBundle\Model\GoGame;
-use Goutte\QuadsphereGoBundle\Exception\IllegalMoveException;
-use Goutte\QuadsphereGoBundle\Exception\InvalidCoordinatesException;
-use Goutte\QuadsphereGoBundle\Util\Math;
-use Goutte\QuadsphereGoBundle\Util\MultiArrayIndex as Index;
+use GeorgetteParty\GMFBundle\Model\GoGame;
+use GeorgetteParty\GMFBundle\Exception\IllegalMoveException;
+use GeorgetteParty\GMFBundle\Exception\InvalidCoordinatesException;
+use GeorgetteParty\GMFBundle\Util\Math;
+use GeorgetteParty\GMFBundle\Util\MultiArrayIndex as Index;
 
 
 /**
@@ -34,7 +34,7 @@ use Goutte\QuadsphereGoBundle\Util\MultiArrayIndex as Index;
  * What use could we find for a Quadsphere class ? Or Interface ?
  *
  * Class QuadsphereFacesBoard
- * @package Goutte\QuadsphereGoBundle\Space
+ * @package GeorgetteParty\GMFBundle\Space
  */
 class QuadsphereFacesLattice implements CoordinatesSystem
 {
@@ -115,7 +115,7 @@ class QuadsphereFacesLattice implements CoordinatesSystem
      *
      * @param Coordinates $c
      * @return bool
-     * @throws \Goutte\QuadsphereGoBundle\Exception\InvalidCoordinatesException
+     * @throws \GeorgetteParty\GMFBundle\Exception\InvalidCoordinatesException
      */
     protected function validate(Coordinates $c)
     {
@@ -171,7 +171,7 @@ class QuadsphereFacesLattice implements CoordinatesSystem
      *
      * @param $coordinates
      * @return array
-     * @throws \Goutte\QuadsphereGoBundle\Exception\InvalidCoordinatesException
+     * @throws \GeorgetteParty\GMFBundle\Exception\InvalidCoordinatesException
      */
     protected function arrayize($coordinates)
     {

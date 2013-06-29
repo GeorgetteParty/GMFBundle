@@ -7,13 +7,13 @@ use Behat\Behat\Context\ClosuredContextInterface,
 use Behat\Behat\Exception\BehaviorException;
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
-use Goutte\QuadsphereGoBundle\Exception\IllegalMoveException;
-use Goutte\QuadsphereGoBundle\Model\GoBoard;
-use Goutte\QuadsphereGoBundle\Model\GoGame;
-use Goutte\QuadsphereGoBundle\Model\GoPlayer;
+use GeorgetteParty\GMFBundle\Exception\IllegalMoveException;
+use GeorgetteParty\GMFBundle\Model\GoBoard;
+use GeorgetteParty\GMFBundle\Model\GoGame;
+use GeorgetteParty\GMFBundle\Model\GoPlayer;
 
-use Goutte\QuadsphereGoBundle\Features\Bootstrap\GameContext;
-use Goutte\QuadsphereGoBundle\Features\Bootstrap\I;
+use GeorgetteParty\GMFBundle\Features\Bootstrap\GameContext;
+use GeorgetteParty\GMFBundle\Features\Bootstrap\I;
 
 // Require 3rd-party libraries here:
 //

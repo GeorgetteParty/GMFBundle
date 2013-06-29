@@ -1,6 +1,6 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Is;
+namespace GeorgetteParty\GMFBundle\Is;
 
 /**
  * For Moves for instance
@@ -9,7 +9,7 @@ namespace Goutte\QuadsphereGoBundle\Is;
  * will be set an auto-incrementing id by the Game.
  *
  * Interface Identifiable
- * @package Goutte\QuadsphereGoBundle\Is
+ * @package GeorgetteParty\GMFBundle\Is
  */
 interface Identifiable {
     public function getId();

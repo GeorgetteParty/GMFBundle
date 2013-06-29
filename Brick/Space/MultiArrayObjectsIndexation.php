@@ -1,14 +1,14 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Brick\Space;
+namespace GeorgetteParty\GMFBundle\Brick\Space;
 
 use ArrayObject;
 use GeorgetteParty\UnicodeTesselationBundle\Iterator\CubeFacesIterator;
-use Goutte\QuadsphereGoBundle\Exception\InvalidCoordinatesException;
-use Goutte\QuadsphereGoBundle\Is\Analyzable;
-use Goutte\QuadsphereGoBundle\Space\Coordinates;
-use Goutte\QuadsphereGoBundle\Space\Is\Positionable;
-use Goutte\QuadsphereGoBundle\Util\MultiArrayIndex;
+use GeorgetteParty\GMFBundle\Exception\InvalidCoordinatesException;
+use GeorgetteParty\GMFBundle\Is\Analyzable;
+use GeorgetteParty\GMFBundle\Space\Coordinates;
+use GeorgetteParty\GMFBundle\Space\Is\Positionable;
+use GeorgetteParty\GMFBundle\Util\MultiArrayIndex;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
 /**
@@ -24,7 +24,7 @@ use Symfony\Component\Config\Definition\Exception\Exception;
  * and make a Trait for Space and one for a more generic indexation of `Indexable` Objects
  *
  * Trait MultiArrayObjectsIndexation
- * @package Goutte\QuadsphereGoBundle\Brick\Space
+ * @package GeorgetteParty\GMFBundle\Brick\Space
  */
 trait MultiArrayObjectsIndexation
 {
@@ -139,7 +139,7 @@ trait MultiArrayObjectsIndexation
      * fixme: this needs sanitization somewhere along the chain, but not here i think
      *
      * @param Coordinates|array $coordinates
-     * @throws \Goutte\QuadsphereGoBundle\Exception\InvalidCoordinatesException
+     * @throws \GeorgetteParty\GMFBundle\Exception\InvalidCoordinatesException
      * @return array
      */
     public function getObjectsAt($coordinates)

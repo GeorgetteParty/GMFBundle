@@ -1,13 +1,13 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Model;
+namespace GeorgetteParty\GMFBundle\Model;
 
-use Goutte\QuadsphereGoBundle\Brick\Unit\GameAsParameter;
-use Goutte\QuadsphereGoBundle\Brick\Unit\PlayerAsParameter;
-use Goutte\QuadsphereGoBundle\Is\Game;
-use Goutte\QuadsphereGoBundle\Is\OfGame;
-use Goutte\QuadsphereGoBundle\Is\Player;
-use Goutte\QuadsphereGoBundle\Is\OfPlayer;
+use GeorgetteParty\GMFBundle\Brick\Unit\GameAsParameter;
+use GeorgetteParty\GMFBundle\Brick\Unit\PlayerAsParameter;
+use GeorgetteParty\GMFBundle\Is\Game;
+use GeorgetteParty\GMFBundle\Is\OfGame;
+use GeorgetteParty\GMFBundle\Is\Player;
+use GeorgetteParty\GMFBundle\Is\OfPlayer;
 
 /**
  * Made by a Player, in a Game.
@@ -17,7 +17,7 @@ use Goutte\QuadsphereGoBundle\Is\OfPlayer;
  * A Game executes Moves.
  *
  * Class Move
- * @package Goutte\QuadsphereGoBundle\Model
+ * @package GeorgetteParty\GMFBundle\Model
  */
 class Move implements OfGame, OfPlayer
 {

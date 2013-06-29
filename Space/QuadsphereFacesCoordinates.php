@@ -1,11 +1,11 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Space;
+namespace GeorgetteParty\GMFBundle\Space;
 
-use Goutte\QuadsphereGoBundle\Space\Coordinates;
-use Goutte\QuadsphereGoBundle\Space\Coordinates\Are\Validable;
-use Goutte\QuadsphereGoBundle\Space\Coordinates\ValidateAsIntegers;
-use Goutte\QuadsphereGoBundle\Space\Coordinates\Cartesian3D;
+use GeorgetteParty\GMFBundle\Space\Coordinates;
+use GeorgetteParty\GMFBundle\Space\Coordinates\Are\Validable;
+use GeorgetteParty\GMFBundle\Space\Coordinates\ValidateAsIntegers;
+use GeorgetteParty\GMFBundle\Space\Coordinates\Cartesian3D;
 
 /**
  * Our chosen implementation of coordinates for
@@ -17,7 +17,7 @@ use Goutte\QuadsphereGoBundle\Space\Coordinates\Cartesian3D;
  * - provide convenient accessors
  *
  * Class QuadsphereFacesCoordinates
- * @package Goutte\QuadsphereGoBundle\Space
+ * @package GeorgetteParty\GMFBundle\Space
  */
 class QuadsphereFacesCoordinates extends Coordinates implements Validable
 {

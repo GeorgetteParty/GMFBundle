@@ -1,9 +1,9 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Space\Coordinates;
+namespace GeorgetteParty\GMFBundle\Space\Coordinates;
 
-use Goutte\QuadsphereGoBundle\Exception\InvalidCoordinatesException;
-use Goutte\QuadsphereGoBundle\Space\Coordinates;
+use GeorgetteParty\GMFBundle\Exception\InvalidCoordinatesException;
+use GeorgetteParty\GMFBundle\Space\Coordinates;
 
 
 /**
@@ -11,7 +11,7 @@ use Goutte\QuadsphereGoBundle\Space\Coordinates;
  * Use on Coordinates
  *
  * Trait ValidateAsIntegers
- * @package Goutte\QuadsphereGoBundle\Space\Coordinates
+ * @package GeorgetteParty\GMFBundle\Space\Coordinates
  */
 trait ValidateAsIntegers // implements Validable
 {

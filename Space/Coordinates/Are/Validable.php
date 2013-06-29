@@ -1,15 +1,15 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Space\Coordinates\Are;
+namespace GeorgetteParty\GMFBundle\Space\Coordinates\Are;
 
-use Goutte\QuadsphereGoBundle\Exception\InvalidCoordinatesException;
+use GeorgetteParty\GMFBundle\Exception\InvalidCoordinatesException;
 
 /**
  * If your Coordinates implement this, the CoordinatesSystem will run it
  * for you when appropriate.
  *
  * Interface Validable
- * @package Goutte\QuadsphereGoBundle\Space
+ * @package GeorgetteParty\GMFBundle\Space
  */
 interface Validable
 {

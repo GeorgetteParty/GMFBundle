@@ -1,6 +1,6 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Tests;
+namespace GeorgetteParty\GMFBundle\Tests;
 
 use Exception;
 
@@ -10,7 +10,7 @@ use Exception;
  * Some of them are not tested (yet). Fell free
  *
  * Class GlobalFunctionsTest
- * @package Goutte\QuadsphereGoBundle\Tests
+ * @package GeorgetteParty\GMFBundle\Tests
  */
 class GlobalFunctionsTest extends \PHPUnit_Framework_TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Is;
+namespace GeorgetteParty\GMFBundle\Is;
 
 /**
  * A contract for a class being a Game,
@@ -9,7 +9,7 @@ namespace Goutte\QuadsphereGoBundle\Is;
  * This might be used by the GMF's Application layer
  *
  * Interface Game
- * @package Goutte\QuadsphereGoBundle\Is
+ * @package GeorgetteParty\GMFBundle\Is
  */
 interface Game {
 

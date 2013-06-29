@@ -1,6 +1,6 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Space;
+namespace GeorgetteParty\GMFBundle\Space;
 
 use ArrayObject;
 
@@ -9,7 +9,7 @@ use ArrayObject;
  * Extending ArrayObject
  *
  * Class Coordinates
- * @package Goutte\QuadsphereGoBundle\Space
+ * @package GeorgetteParty\GMFBundle\Space
  */
 class Coordinates extends ArrayObject
 {

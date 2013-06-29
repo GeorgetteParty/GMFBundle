@@ -1,11 +1,11 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Brick\Unit;
+namespace GeorgetteParty\GMFBundle\Brick\Unit;
 
-use Goutte\QuadsphereGoBundle\Is\Colorized;
-use Goutte\QuadsphereGoBundle\Is\OfPlayer;
-use Goutte\QuadsphereGoBundle\Is\OfGame;
-use Goutte\QuadsphereGoBundle\Is\Color;
+use GeorgetteParty\GMFBundle\Is\Colorized;
+use GeorgetteParty\GMFBundle\Is\OfPlayer;
+use GeorgetteParty\GMFBundle\Is\OfGame;
+use GeorgetteParty\GMFBundle\Is\Color;
 
 /**
  * Use this to implement Colorized.

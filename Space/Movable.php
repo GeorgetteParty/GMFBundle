@@ -1,8 +1,8 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Space;
+namespace GeorgetteParty\GMFBundle\Space;
 
-use Goutte\QuadsphereGoBundle\Space\Coordinates;
+use GeorgetteParty\GMFBundle\Space\Coordinates;
 
 /**
  * Implement in any object that has variable coordinates in space.
@@ -10,7 +10,7 @@ use Goutte\QuadsphereGoBundle\Space\Coordinates;
  * may have a method `addObject(Positionable $p)`
  *
  * Interface Movable
- * @package Goutte\QuadsphereGoBundle\Is
+ * @package GeorgetteParty\GMFBundle\Is
  */
 interface Movable extends Positionable
 {

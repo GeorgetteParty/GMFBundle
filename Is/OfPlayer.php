@@ -1,13 +1,13 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Is;
+namespace GeorgetteParty\GMFBundle\Is;
 
 /**
  * For Stone and StoneGroup right now.
  * This is GMF-oriented
  *
  * Interface OfPlayer
- * @package Goutte\QuadsphereGoBundle\Is
+ * @package GeorgetteParty\GMFBundle\Is
  */
 interface OfPlayer {
     /**

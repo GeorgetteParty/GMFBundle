@@ -1,9 +1,9 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Features\Bootstrap;
+namespace GeorgetteParty\GMFBundle\Features\Bootstrap;
 
 use Behat\Behat\Exception\BehaviorException;
-use Goutte\QuadsphereGoBundle\Model\GoPlayer;
+use GeorgetteParty\GMFBundle\Model\GoPlayer;
 
 trait I
 {

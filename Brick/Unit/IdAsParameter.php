@@ -1,9 +1,9 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Brick\Unit;
+namespace GeorgetteParty\GMFBundle\Brick\Unit;
 
 use Exception;
-use Goutte\QuadsphereGoBundle\Space\Coordinates;
+use GeorgetteParty\GMFBundle\Space\Coordinates;
 
 /**
  * Bare-bones way of having an id as parameter

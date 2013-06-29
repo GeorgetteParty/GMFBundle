@@ -1,6 +1,6 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Exception;
+namespace GeorgetteParty\GMFBundle\Exception;
 
 /**
  * Can pass the array of coordinates (x,y,z) as second parameter,
@@ -11,7 +11,7 @@ namespace Goutte\QuadsphereGoBundle\Exception;
  * This is also a base class for you Exceptions.
  *
  * Class IllegalMoveException
- * @package Goutte\QuadsphereGoBundle\Exception
+ * @package GeorgetteParty\GMFBundle\Exception
  */
 class IllegalMoveException extends \Exception
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Brick\Unit;
+namespace GeorgetteParty\GMFBundle\Brick\Unit;
 
-use Goutte\QuadsphereGoBundle\Space\Coordinates;
+use GeorgetteParty\GMFBundle\Space\Coordinates;
 
 /**
  * Use this, and then

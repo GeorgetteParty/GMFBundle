@@ -1,6 +1,6 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Is;
+namespace GeorgetteParty\GMFBundle\Is;
 
 /**
  * A contract for a class being a Turn Based Game,
@@ -10,7 +10,7 @@ namespace Goutte\QuadsphereGoBundle\Is;
  * this is mostly used for strict typing.
  *
  * Interface Game
- * @package Goutte\QuadsphereGoBundle\Is
+ * @package GeorgetteParty\GMFBundle\Is
  */
 interface TurnBasedGame extends Game
 {

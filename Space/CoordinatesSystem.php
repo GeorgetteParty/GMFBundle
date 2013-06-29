@@ -1,6 +1,6 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Space;
+namespace GeorgetteParty\GMFBundle\Space;
 
 /**
  * A Space may make use of a CoordinatesSystem

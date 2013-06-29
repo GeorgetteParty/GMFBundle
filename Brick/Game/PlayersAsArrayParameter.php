@@ -1,14 +1,14 @@
 <?php
 
-namespace Goutte\QuadsphereGoBundle\Brick\Game;
+namespace GeorgetteParty\GMFBundle\Brick\Game;
 
-use Goutte\QuadsphereGoBundle\Is\Player;
+use GeorgetteParty\GMFBundle\Is\Player;
 
 /**
  *
  *
  * Trait PlayersAsArrayParameter
- * @package Goutte\QuadsphereGoBundle\Brick\Unit
+ * @package GeorgetteParty\GMFBundle\Brick\Unit
  */
 trait PlayersAsArrayParameter // implements (part of) Game
 {
