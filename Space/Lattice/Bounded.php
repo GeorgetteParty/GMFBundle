@@ -1,8 +1,8 @@
 <?php
 
-namespace Gmf\GmfBundle\Space\Lattice;
+namespace GeorgetteParty\GMFBundle\Space\Lattice;
 
-use Gmf\GmfBundle\Space\Cell;
+use GeorgetteParty\GMFBundle\Space\Cell;
 
 interface Bounded
 {

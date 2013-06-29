@@ -1,11 +1,11 @@
 <?php
 
-namespace Gmf\GmfBundle\Core;
+namespace GeorgetteParty\GMFBundle\Core;
 
-use Gmf\GmfBundle\Brick\GameBrick;
-use Gmf\GmfBundle\Event\Event;
-use Gmf\GmfBundle\Traits\Dispatchable;
-use Gmf\GmfBundle\Traits\Snapshotable;
+use GeorgetteParty\GMFBundle\Brick\GameBrick;
+use GeorgetteParty\GMFBundle\Event\Event;
+use GeorgetteParty\GMFBundle\Traits\Dispatchable;
+use GeorgetteParty\GMFBundle\Traits\Snapshotable;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
 class GameCore

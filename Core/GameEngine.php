@@ -1,7 +1,7 @@
 <?php
 
-namespace Gmf\GmfBundle\Core;
-//use Gmf\GmfBundle\Model\Game\Engine as BaseGameEngine;
+namespace GeorgetteParty\GMFBundle\Core;
+//use GeorgetteParty\GMFBundle\Model\Game\Engine as BaseGameEngine;
 
 /**
  *

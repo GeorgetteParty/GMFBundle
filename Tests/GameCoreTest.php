@@ -1,10 +1,10 @@
 <?php
 
-namespace Gmf\GmfBundle\Tests\Core;
+namespace GeorgetteParty\GMFBundle\Tests\Core;
 
-use Gmf\GmfBundle\Brick\GameBrick;
-use Gmf\GmfBundle\Core\GameCore;
-use Gmf\GmfBundle\Event\Event;
+use GeorgetteParty\GMFBundle\Brick\GameBrick;
+use GeorgetteParty\GMFBundle\Core\GameCore;
+use GeorgetteParty\GMFBundle\Event\Event;
 
 class GameCoreTests extends \PHPUnit_Framework_TestCase
 {
@@ -14,7 +14,7 @@ class GameCoreTests extends \PHPUnit_Framework_TestCase
     public function testInit()
     {
         // init method should raise GameCoreInit event
-        $listener = $this->getMock('\Gmf\GmfBundle\Event\Listener', array('onGameCoreInit'));
+        $listener = $this->getMock('\GeorgetteParty\GMFBundle\Event\Listener', array('onGameCoreInit'));
         $listener->expects($this->once())->method('onGameCoreInit');
 
         $core = $this->getFakeCore();
@@ -35,7 +35,7 @@ class GameCoreTests extends \PHPUnit_Framework_TestCase
     public function testLoad()
     {
         // load should raise GameCoreLoad event
-        $listener = $this->getMock('\Gmf\GmfBundle\Event\Listener', array('onGameCoreLoad'));
+        $listener = $this->getMock('\GeorgetteParty\GMFBundle\Event\Listener', array('onGameCoreLoad'));
         $listener->expects($this->once())->method('onGameCoreLoad');
 
         $core = $this->getFakeCore();

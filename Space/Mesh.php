@@ -1,7 +1,7 @@
 <?php
-namespace Gmf\GmfBundle\Space;
+namespace GeorgetteParty\GMFBundle\Space;
 
-use Gmf\GmfBundle\Space\Geometry;
+use GeorgetteParty\GMFBundle\Space\Geometry;
 
 /**
  * Mesh

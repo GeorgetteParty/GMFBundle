@@ -1,9 +1,9 @@
 <?php
 
-namespace Gmf\GmfBundle\Tests\Core;
+namespace GeorgetteParty\GMFBundle\Tests\Core;
 
-use Gmf\GmfBundle\Core\GameApplication;
-use Gmf\GmfBundle\Core\GameEngine;
+use GeorgetteParty\GMFBundle\Core\GameApplication;
+use GeorgetteParty\GMFBundle\Core\GameEngine;
 
 class GameApplicationTests extends \PHPUnit_Framework_TestCase
 {

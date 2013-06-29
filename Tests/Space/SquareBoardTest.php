@@ -9,11 +9,11 @@
 
  */
 
-namespace Gmf\GmfBundle\Tests\Space;
+namespace GeorgetteParty\GMFBundle\Tests\Space;
 
-class SquareBoard implements \Gmf\GmfBundle\Space\Lattice
+class SquareBoard implements \GeorgetteParty\GMFBundle\Space\Lattice
 {
-    use \Gmf\GmfBundle\Space\Lattice\Tesselation\Dimension2\Grid;
+    use \GeorgetteParty\GMFBundle\Space\Lattice\Tesselation\Dimension2\Grid;
 }
 
 class SquareBoardTest extends \PHPUnit_Framework_TestCase

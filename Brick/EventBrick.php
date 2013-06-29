@@ -1,8 +1,8 @@
 <?php
 
-namespace Gmf\GmfBundle\Brick;
+namespace GeorgetteParty\GMFBundle\Brick;
 
-use Gmf\GmfBundle\Model\Game\Brick;
+use GeorgetteParty\GMFBundle\Model\Game\Brick;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
 /**

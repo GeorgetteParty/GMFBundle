@@ -1,6 +1,6 @@
 <?php
 
-namespace Gmf\GmfBundle\Interfaces;
+namespace GeorgetteParty\GMFBundle\Interfaces;
 
 interface Snapshotable
 {

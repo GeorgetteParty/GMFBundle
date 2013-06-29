@@ -1,5 +1,5 @@
 <?php
-namespace Gmf\GmfBundle\Space;
+namespace GeorgetteParty\GMFBundle\Space;
 
 /**
  * Scene

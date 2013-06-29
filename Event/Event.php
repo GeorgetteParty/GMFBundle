@@ -1,6 +1,6 @@
 <?php
 
-namespace Gmf\GmfBundle\Event;
+namespace GeorgetteParty\GMFBundle\Event;
 
 use Symfony\Component\EventDispatcher\Event as BaseEvent;
 

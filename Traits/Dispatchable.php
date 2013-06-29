@@ -1,12 +1,12 @@
 <?php
 
-namespace Gmf\GmfBundle\Traits;
+namespace GeorgetteParty\GMFBundle\Traits;
 
-use Gmf\GmfBundle\Event\Event;
-use Gmf\GmfBundle\Event\Listener;
+use GeorgetteParty\GMFBundle\Event\Event;
+use GeorgetteParty\GMFBundle\Event\Listener;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
-trait Dispatchable // implements \Gmf\GmfBundle\Interfaces\Dispatchable
+trait Dispatchable // implements \GeorgetteParty\GMFBundle\Interfaces\Dispatchable
 {
     /**
      * @var EventDispatcher

@@ -1,9 +1,9 @@
 <?php
 
-namespace Gmf\GmfBundle\Interfaces;
+namespace GeorgetteParty\GMFBundle\Interfaces;
 
-use Gmf\GmfBundle\Event\Event;
-use Gmf\GmfBundle\Event\Listener;
+use GeorgetteParty\GMFBundle\Event\Event;
+use GeorgetteParty\GMFBundle\Event\Listener;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
 interface Dispatchable

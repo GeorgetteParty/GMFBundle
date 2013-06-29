@@ -1,8 +1,8 @@
 <?php
 
-namespace Gmf\GmfBundle\Traits;
+namespace GeorgetteParty\GMFBundle\Traits;
 
-trait Snapshotable // implements \Gmf\GmfBundle\Interfaces\Snapshotable
+trait Snapshotable // implements \GeorgetteParty\GMFBundle\Interfaces\Snapshotable
 {
     public function save()
     {

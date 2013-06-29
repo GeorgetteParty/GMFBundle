@@ -1,6 +1,6 @@
 <?php
 
-namespace Gmf\GmfBundle\Core;
+namespace GeorgetteParty\GMFBundle\Core;
 
 class GameApplication
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Gmf\GmfBundle\Space\Lattice\Tesselation\Dimension2;
+namespace GeorgetteParty\GMFBundle\Space\Lattice\Tesselation\Dimension2;
 
-use Gmf\GmfBundle\Space\Cell;
+use GeorgetteParty\GMFBundle\Space\Cell;
 
 trait Grid // implements Lattice
 {

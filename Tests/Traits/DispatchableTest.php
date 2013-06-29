@@ -1,12 +1,12 @@
 <?php
 
-namespace Gmf\GmfBundle\Tests\Traits;
+namespace GeorgetteParty\GMFBundle\Tests\Traits;
 
 class DispatchableTest extends \PHPUnit_Framework_TestCase
 {
     public function testDispatch()
     {
-        $dispatchableMock = $this->getObjectForTrait('\Gmf\GmfBundle\Traits\Dispatchable');
+        $dispatchableMock = $this->getObjectForTrait('\GeorgetteParty\GMFBundle\Traits\Dispatchable');
         $dispatchable = new \ReflectionClass($dispatchableMock);
 
         // should have a method which return a event dispatcher
@@ -16,7 +16,7 @@ class DispatchableTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($dispatchable->hasMethod('dispatch'), 'Trait Dispatchable has not method dispatch');
 
         $parameters = $dispatchable->getMethod('addListener')->getParameters();
-        $this->assertEquals('Gmf\GmfBundle\Event\Listener', $parameters[1]->getClass()->getName(),
-            'Second parameter of method "addListener" in Dispatchable Trait should be an instance of \Gmf\GmfBundle\Event\Listener');
+        $this->assertEquals('GeorgetteParty\GMFBundle\Event\Listener', $parameters[1]->getClass()->getName(),
+            'Second parameter of method "addListener" in Dispatchable Trait should be an instance of \GeorgetteParty\GMFBundle\Event\Listener');
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace Gmf\GmfBundle\Brick;
+namespace GeorgetteParty\GMFBundle\Brick;
 
-use Gmf\GmfBundle\Brick\Behavior\Behavior;
-use Gmf\GmfBundle\Model\Game\Brick;
+use GeorgetteParty\GMFBundle\Brick\Behavior\Behavior;
+use GeorgetteParty\GMFBundle\Model\Game\Brick;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
 class GameBrick extends Brick

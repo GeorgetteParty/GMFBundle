@@ -1,6 +1,6 @@
 <?php
 
-namespace Gmf\GmfBundle\Event;
+namespace GeorgetteParty\GMFBundle\Event;
 
 class Listener
 {
