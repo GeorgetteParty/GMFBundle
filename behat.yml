@@ -1,6 +1,0 @@
-# behat.yml -- http://docs.behat.org/guides/7.config.html
-
-default:
-    paths:
-        features: Features
-        bootstrap: %behat.paths.features%/Bootstrap

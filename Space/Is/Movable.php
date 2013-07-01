@@ -1,6 +1,6 @@
 <?php
 
-namespace GeorgetteParty\GMFBundle\Space;
+namespace GeorgetteParty\GMFBundle\Space\Is;
 
 use GeorgetteParty\GMFBundle\Space\Coordinates;
 
