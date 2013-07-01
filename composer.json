@@ -30,8 +30,8 @@
   },
   "autoload": {
     "psr-0": {
-      "Gmf\\GmfBundle": ""
+      "GeorgetteParty\\GMFBundle": ""
     }
   },
-  "target-dir": "GMF/GMFBundle"
+  "target-dir": "GeorgetteParty/GMFBundle"
 }

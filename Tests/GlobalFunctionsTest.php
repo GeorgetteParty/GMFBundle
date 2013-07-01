@@ -7,7 +7,7 @@ use Exception;
 /**
  * Test the global php functions defined in global_functions.php
  *
- * Some of them are not tested (yet). Fell free
+ * Some of them are not tested (yet).
  *
  * Class GlobalFunctionsTest
  * @package GeorgetteParty\GMFBundle\Tests
