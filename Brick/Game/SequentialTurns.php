@@ -50,7 +50,7 @@ trait SequentialTurns // implements TurnBasedGame
      */
     public function endOfTurn(Player $player)
     {
-        $players =& $this->getPlayers();
+        $players = $this->getPlayers();
 
         $k = array_search($player, $players);
 
