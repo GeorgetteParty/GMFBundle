@@ -2,6 +2,8 @@
 
 namespace GeorgetteParty\GMFBundle\Space\Is;
 
+use GeorgetteParty\GMFBundle\Space\Coordinates;
+
 /**
  * This is a WIP with no particular goal
  *
