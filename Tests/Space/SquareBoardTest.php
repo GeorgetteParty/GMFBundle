@@ -7,6 +7,10 @@
 / /_/ / /_/ / /_/ / /_/ /_/  __/
 \____/\____/\__,_/\__/\__/\___/
 
+
+Tis is a dump -- don't delete it, i'll do it when the time is right.
+
+
  */
 
 namespace GeorgetteParty\GMFBundle\Tests\Space;
@@ -33,13 +37,13 @@ class SquareBoardTest extends \PHPUnit_Framework_TestCase
         unset($this->board);
     }
 
-    /**
-     * @expectedException \PHPUnit_Framework_Error
-     */
-    public function testFindAdjacentOfNull()
-    {
-        $found = $this->board->findAdjacentOf(null);
-    }
+//    /**
+//     * @expectedException \PHPUnit_Framework_Error
+//     */
+//    public function testFindAdjacentOfNull()
+//    {
+//        $found = $this->board->findAdjacentOf(null);
+//    }
 
     public function testFindAdjacentOfOrigin()
     {
