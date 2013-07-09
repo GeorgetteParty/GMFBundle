@@ -38,6 +38,9 @@ trait SequentialTurns // implements TurnBasedGame
     {
         $cp = $this->getCurrentPlayer();
 
+//        echo '!!!!!'."\n";
+//        var_dump($cp,$player);
+
         return $cp == null || $cp === $player;
     }
 
@@ -52,7 +55,7 @@ trait SequentialTurns // implements TurnBasedGame
     {
         $players = $this->getPlayers();
 
-        $k = array_search($player, $players);
+        $k = array_search($player, $players, true);
 
         if (false === $k) {
             throw new InvalidArgumentException("This player is not in the game");

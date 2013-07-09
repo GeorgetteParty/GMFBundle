@@ -14,7 +14,7 @@ trait PlayersAsArrayParameter // implements (part of) Game
 {
 
     /**
-     * @ODM\ReferenceMany(targetDocument="GoPlayer")
+     * @ODM\ReferenceMany(targetDocument="Aego\AegoBundle\Document\GoPlayer")
      */
     protected $players = array();
 
