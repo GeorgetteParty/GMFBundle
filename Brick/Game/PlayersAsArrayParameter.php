@@ -13,6 +13,9 @@ use GeorgetteParty\GMFBundle\Is\Player;
 trait PlayersAsArrayParameter // implements (part of) Game
 {
 
+    /**
+     * @ODM\ReferenceMany(targetDocument="GoPlayer")
+     */
     protected $players = array();
 
     public function addPlayer(Player $player)
