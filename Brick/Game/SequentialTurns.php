@@ -16,7 +16,24 @@ trait SequentialTurns // implements TurnBasedGame
     abstract public function getPlayers();
 
 
+    /**
+     * This is problematic.
+     *
+     * @ODM\ReferenceOne(
+     *     targetDocument="Aego\AegoBundle\Document\GoPlayer"
+     * )
+     */
+    protected $current_player;
 
+    public function setCurrentPlayer($current_player)
+    {
+        $this->current_player = $current_player;
+    }
+
+    public function getCurrentPlayer()
+    {
+        return $this->current_player;
+    }
 
     /**
      * When nobody played, it's the turn of anybody.
@@ -27,9 +44,6 @@ trait SequentialTurns // implements TurnBasedGame
     public function isTurnOf(Player $player)
     {
         $cp = $this->getCurrentPlayer();
-
-//        echo '!!!!!'."\n";
-//        var_dump($cp,$player);
 
         return $cp == null || $cp === $player;
     }
