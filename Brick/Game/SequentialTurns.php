@@ -2,6 +2,7 @@
 
 namespace GeorgetteParty\GMFBundle\Brick\Game;
 
+use Doctrine\Common\Collections\Collection;
 use InvalidArgumentException;
 use GeorgetteParty\GMFBundle\Is\Player;
 
@@ -15,17 +16,6 @@ trait SequentialTurns // implements TurnBasedGame
     abstract public function getPlayers();
 
 
-    protected $current_player;
-
-    public function setCurrentPlayer($current_player)
-    {
-        $this->current_player = $current_player;
-    }
-
-    public function getCurrentPlayer()
-    {
-        return $this->current_player;
-    }
 
 
     /**
@@ -55,7 +45,11 @@ trait SequentialTurns // implements TurnBasedGame
     {
         $players = $this->getPlayers();
 
-        $k = array_search($player, $players, true);
+        if ($players instanceof Collection) {
+            $k = $players->indexOf($player);
+        } else {
+            $k = array_search($player, $players, true);
+        }
 
         if (false === $k) {
             throw new InvalidArgumentException("This player is not in the game");
