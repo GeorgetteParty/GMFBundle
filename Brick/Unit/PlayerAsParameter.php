@@ -11,6 +11,7 @@ use GeorgetteParty\GMFBundle\Is\Player;
  */
 trait PlayerAsParameter
 {
+
     protected $player;
 
     /**
