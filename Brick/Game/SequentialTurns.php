@@ -15,25 +15,36 @@ trait SequentialTurns // implements TurnBasedGame
      */
     abstract public function getPlayers();
 
-
     /**
-     * This is problematic.
+     * This is problematic, as this annotation should not be in the GMF !
+     * I tried many many many different things, without success :(
+     *
+     * The only thing I could find was either
+     * not to use annotations or not to use Traits...
+     *
+     * Tried
+     * - overriding this property
+     * - making my own Trait, use-ing this one
      *
      * @ODM\ReferenceOne(
      *     targetDocument="Aego\AegoBundle\Document\GoPlayer"
      * )
      */
-    protected $current_player;
+    private $current_player;
 
     public function setCurrentPlayer($current_player)
     {
         $this->current_player = $current_player;
     }
 
+    /**
+     * @return Player
+     */
     public function getCurrentPlayer()
     {
         return $this->current_player;
     }
+
 
     /**
      * When nobody played, it's the turn of anybody.
