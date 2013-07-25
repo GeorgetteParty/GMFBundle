@@ -13,18 +13,22 @@ trait SequentialTurns // implements TurnBasedGame
      * This is like requiring the Interface Game
      * @return Player[]
      */
-    abstract public function getPlayers();
+//    abstract public function getPlayers();
 
     /**
+     * The current player
+     *
      * This is problematic, as this annotation should not be in the GMF !
-     * I tried many many many different things, without success :(
      *
-     * The only thing I could find was either
-     * not to use annotations or not to use Traits...
-     *
-     * Tried
+     * Tried (without success)
+     * - a lot :(
      * - overriding this property
      * - making my own Trait, use-ing this one
+     *
+     * Either don't use annotations or don't use Traits...
+     * The only thing I think we can do is to make our own AnnotationDriver,
+     * and configure in the header of the class something like
+     * ODM\Property(name="current_player", type="ReferenceOne", [...])
      *
      * @ODM\ReferenceOne(
      *     targetDocument="Aego\AegoBundle\Document\GoPlayer"
@@ -32,19 +36,36 @@ trait SequentialTurns // implements TurnBasedGame
      */
     private $current_player;
 
-    public function setCurrentPlayer($current_player)
+    /**
+     * A Collection (or vanilla array) of players.
+     * See thoughts above.
+     *
+     * @ODM\ReferenceMany(
+     *     targetDocument="Aego\AegoBundle\Document\GoPlayer",
+     *     cascade={"all"},
+     *     mappedBy="game"
+     * )
+     */
+    protected $players = [];
+
+    /**
+     * Returns an array of Players
+     *
+     * @return Player[]
+     */
+    public function getPlayers()
     {
-        $this->current_player = $current_player;
+        return $this->players;
     }
 
     /**
-     * @return Player
+     * TODO: rename addPlayer(), use with care
+     * @param Player $player
      */
-    public function getCurrentPlayer()
+    public function addPlayerUnchecked(Player $player)
     {
-        return $this->current_player;
+        $this->players[] = $player;
     }
-
 
     /**
      * When nobody played, it's the turn of anybody.
@@ -59,14 +80,23 @@ trait SequentialTurns // implements TurnBasedGame
         return $cp == null || $cp === $player;
     }
 
-
     /**
      * Moves to next Player
      *
-     * @param Player $player
      * @throws InvalidArgumentException
      */
-    public function endOfTurn(Player $player)
+    public function nextPlayer()
+    {
+        $players = $this->getPlayers();
+
+        $k = $this->getIndexOfPlayer($this->getCurrentPlayer());
+
+        $nextPlayer = $players[(($k+1)%count($players))];
+
+        $this->setCurrentPlayer($nextPlayer);
+    }
+
+    protected function getIndexOfPlayer(Player $player)
     {
         $players = $this->getPlayers();
 
@@ -76,13 +106,23 @@ trait SequentialTurns // implements TurnBasedGame
             $k = array_search($player, $players, true);
         }
 
-        if (false === $k) {
-            throw new InvalidArgumentException("This player is not in the game");
-        }
+        return $k;
+    }
 
-        $nextPlayer = $players[(($k+1)%count($players))];
+    /**
+     * @param Player $current_player
+     */
+    public function setCurrentPlayer($current_player)
+    {
+        $this->current_player = $current_player;
+    }
 
-        $this->setCurrentPlayer($nextPlayer);
+    /**
+     * @return Player
+     */
+    public function getCurrentPlayer()
+    {
+        return $this->current_player;
     }
 
 }
