@@ -16,7 +16,7 @@ use GeorgetteParty\GMFBundle\Util\MultiArrayIndex as Index;
  * This is a lattice for the faces of a quadsphere
  * Responsibilities :
  * - Coordinates Index
- * - Coordinates Factory => (make all, and later filter using perlin noise)
+ * - Coordinates Factory => (make all, and later filter using perlin noise to make map)
  * - Adjacency / Pathfinding
  *
  * This Lattice does not care about content.
@@ -76,8 +76,8 @@ class QuadsphereFacesLattice implements CoordinatesSystem
                 $y = $uy - $m;
                 for ($uz = 0; $uz <= 2 * $m; $uz++) {
                     $z = $uz - $m;
-                    // some (x,y,z) sets made here are invalid
-                    // and we looped through all the valid
+                    // most (x,y,z) sets made here are invalid
+                    // but we looped through all the valid too
                     $valid = false;
                     try {
                         $c = new QuadsphereFacesCoordinates(array($x, $y, $z));

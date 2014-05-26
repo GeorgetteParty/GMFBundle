@@ -14,7 +14,6 @@ use ArrayObject;
 class MultiArrayIndex
 {
 
-
     /**
      * Gets value in the array, at the specified $keys.
      * Returns null when not found.

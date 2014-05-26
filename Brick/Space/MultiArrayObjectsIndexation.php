@@ -18,9 +18,7 @@ use Symfony\Component\Config\Definition\Exception\Exception;
  * As I can't fathom anything else we might use (another Trait on par with this one),
  * this is probably going into an heritable(s) class(es), like BasicSpace (!?)
  *
- * fixme: removeObject !
- *
- * Also, we could all mentions of Coordinates and replace by Keys,
+ * Also, we could remove all mentions of Coordinates and replace by Keys,
  * and make a Trait for Space and one for a more generic indexation of `Indexable` Objects
  *
  * Trait MultiArrayObjectsIndexation
