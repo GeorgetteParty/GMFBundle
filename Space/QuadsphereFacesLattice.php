@@ -207,8 +207,8 @@ class QuadsphereFacesLattice implements CoordinatesSystem
 
 
     /**
-     * Returns a array of at most four (4) coordinates arrays
-     * Well, exactly 4 Coordinates, if we implement biome-generation in the board
+     * Returns an array of at most four (4) coordinates arrays
+     * Well, exactly 4 Coordinates, if we implement biome-generation in the board and not here.
      * @param Coordinates $coordinates
      * @return array
      */
@@ -218,7 +218,7 @@ class QuadsphereFacesLattice implements CoordinatesSystem
 
         // find cube face tangent axis (value is -size or size)
         $tangentAxisOffset = $this->getOffsetOfCubeFaceAxis($coordinates);
-        // rotate coords so that tangent axis is first, lat's call them `a,b,c`
+        // rotate coords so that tangent axis is first, let's call them `a,b,c`
         $abc = (array)$coordinates;
         array_rotate_left($abc, $tangentAxisOffset);
 
