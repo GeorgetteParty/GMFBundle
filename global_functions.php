@@ -107,26 +107,14 @@ function odd($n)
  *         -1 for a negative $number,
  *          0 for 0.
  *
- * Can either throw or return 0 for unsupported $number.
- * todo: decide, or implement both ?
- * Errors should not go unnoticed -- unless explicitely silenced.
+ * Throws on unsupported $number.
  *
- * @param $number
+ * @param number $number
  * @return int
  * @throws Exception
  */
-function sign ($number)
+function norm ($number)
 {
-    // loose
-//    if ($number > 0) {
-//        return 1;
-//    } else if ($number < 0) {
-//        return -1;
-//    } else {
-//        return 0;
-//    }
-
-    // strict
     if ($number === 0) {
         return 0;
     } else if ($number > 0) {

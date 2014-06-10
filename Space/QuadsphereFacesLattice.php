@@ -246,7 +246,7 @@ class QuadsphereFacesLattice implements CoordinatesSystem
         $s = $this->getSize();
         $normal = true;
 
-        $i = 3; while ($i--) { // no foreach, we want the first 3
+        $i = 3; while ($i--) { // no foreach, we only want the first 3
             $c = $coords[$i];
             if ($c < -$s || $c > $s) $normal = false;
         }
@@ -294,7 +294,7 @@ class QuadsphereFacesLattice implements CoordinatesSystem
             $f = $coords[$face];
 
             $coords[$over] = boundarize($o,-$s,$s);
-            $coords[$face] = $f - sign($f) * abs($o - sign($o) * $s);
+            $coords[$face] = $f - norm($f) * abs($o - norm($o) * $s);
 
         }
     }
@@ -347,7 +347,6 @@ class QuadsphereFacesLattice implements CoordinatesSystem
 
         return $valid;
     }
-
 
 
 }
